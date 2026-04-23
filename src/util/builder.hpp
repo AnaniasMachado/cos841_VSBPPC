@@ -7,19 +7,19 @@ class Builder {
 public:
     // Paper (cost-based greedy insertion)
     static Solution greedyCost(const VSBPPCInstance& inst,
-                               double kw, double kc);
+                               int kw, int kc);
 
     // First-Fit Decreasing (FFD)
     static Solution firstFitDecreasing(const VSBPPCInstance& inst,
-                                       double kw, double kc);
+                                       int kw, int kc);
 
     // Degree-based greedy (BPPC classic)
     static Solution degreeGreedy(const VSBPPCInstance& inst,
-                                 double kw, double kc);
+                                 int kw, int kc);
 
     // Best-Fit Decreasing (optional but useful)
     static Solution bestFitDecreasing(const VSBPPCInstance& inst,
-                                      double kw, double kc);
+                                      int kw, int kc);
 };
 
 #endif

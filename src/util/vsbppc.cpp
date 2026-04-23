@@ -12,8 +12,7 @@ VSBPPCInstance::VSBPPCInstance(
     std::vector<std::vector<uint64_t>> conflicts_,
     std::vector<std::vector<int>> neighbors_,
     std::vector<int> degree_,
-    std::vector<BinType> binTypes_
-)
+    std::vector<BinType> binTypes_)
     : N(N_),
       weights(std::move(weights_)),
       conflicts(std::move(conflicts_)),
@@ -108,8 +107,7 @@ void VSBPPCInstance::printStatistics() const {
 VSBPPCInstance readInstance(
     const std::string& filename,
     InstanceSet setType,
-    CostType costType)
-{
+    CostType costType) {
     std::ifstream file(filename);
     if (!file) {
         throw std::runtime_error("Error opening file: " + filename);

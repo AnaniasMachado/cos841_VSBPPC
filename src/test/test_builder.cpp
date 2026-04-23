@@ -7,9 +7,9 @@
 #include "../util/builder.hpp"
 
 void testBuilder(const std::string& name,
-                 Solution (*builder)(const VSBPPCInstance&, double, double),
+                 Solution (*builder)(const VSBPPCInstance&, int, int),
                  const VSBPPCInstance& inst,
-                 double kw, double kc) {
+                 int kw, int kc) {
 
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -30,8 +30,8 @@ int main() {
     InstanceSet setType = InstanceSet::SET1;
     CostType costType = CostType::LINEAR;
 
-    double kw = 1000.0;
-    double kc = 1000.0;
+    int kw = 1000;
+    int kc = 1000;
 
     VSBPPCInstance inst = readInstance(filename, setType, costType);
 

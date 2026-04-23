@@ -3,7 +3,7 @@
 
 // ---- Constructor ----
 Solution::Solution(const VSBPPCInstance& instance,
-                   double kw_, double kc_)
+                   int kw_, int kc_)
     : inst(instance), N(instance.N), B(instance.N),
       kw(kw_), kc(kc_) {
     itemBin.assign(N, -1);
@@ -160,7 +160,7 @@ bool Solution::isFeasible() const {
 }
 
 // ---- OBJECTIVE ----
-double Solution::computeObjective() const {
+int Solution::computeObjective() const {
     long long cost = 0;
 
     for (int b = 0; b < B; b++) {
@@ -171,7 +171,7 @@ double Solution::computeObjective() const {
 }
 
 // ---- DELTA SWAP SUBSETS ----
-double deltaSwapSubsets(
+int deltaSwapSubsets(
     const Solution& sol,
     const std::vector<int>& A, // from b1 -> b2
     const std::vector<int>& B, // from b2 -> b1

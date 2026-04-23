@@ -11,7 +11,7 @@ public:
     int N;
     int B;
 
-    double kw, kc;
+    int kw, kc;
 
     // assignment
     std::vector<int> itemBin;
@@ -33,7 +33,7 @@ public:
     std::vector<int> badBins;
 
     Solution(const VSBPPCInstance& instance,
-             double kw_, double kc_);
+             int kw_, int kc_);
 
     void addItem(int i, int b);
     void removeItem(int i);
@@ -43,10 +43,10 @@ public:
     void updateBadBin(int b);
     bool isFeasible() const;
 
-    double computeObjective() const;
+    int computeObjective() const;
 };
 
-double deltaSwapSubsets(
+int deltaSwapSubsets(
     const Solution& sol,
     const std::vector<int>& A, // from b1 -> b2
     const std::vector<int>& B, // from b2 -> b1

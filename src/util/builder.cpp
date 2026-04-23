@@ -36,19 +36,19 @@ static double deltaCost(const Solution& sol, int i, int b) {
 // 1. GREEDY COST (cost-based)
 // =====================================================
 Solution Builder::greedyCost(const VSBPPCInstance& inst,
-                             double kw, double kc) {
+                             int kw, int kc) {
     Solution sol(inst, kw, kc);
 
     int nextBin = 0;
 
     for (int i = 0; i < inst.N; i++) {
         int best = -1;
-        double bestVal = std::numeric_limits<double>::infinity();
+        int bestVal = std::numeric_limits<int>::max();
 
         for (int b = 0; b < nextBin; b++) {
             if (!feasible(sol, i, b)) continue;
 
-            double val = deltaCost(sol, i, b);
+            int val = deltaCost(sol, i, b);
 
             if (val < bestVal) {
                 bestVal = val;
@@ -68,7 +68,7 @@ Solution Builder::greedyCost(const VSBPPCInstance& inst,
 // 2. FIRST-FIT DECREASING (FFD)
 // =====================================================
 Solution Builder::firstFitDecreasing(const VSBPPCInstance& inst,
-                                     double kw, double kc) {
+                                     int kw, int kc) {
     Solution sol(inst, kw, kc);
 
     std::vector<int> order(inst.N);
@@ -104,7 +104,7 @@ Solution Builder::firstFitDecreasing(const VSBPPCInstance& inst,
 // 3. DEGREE GREEDY (BPPC standard)
 // =====================================================
 Solution Builder::degreeGreedy(const VSBPPCInstance& inst,
-                               double kw, double kc) {
+                               int kw, int kc) {
     Solution sol(inst, kw, kc);
 
     std::vector<int> order(inst.N);
@@ -150,7 +150,7 @@ Solution Builder::degreeGreedy(const VSBPPCInstance& inst,
 // 4. BEST-FIT DECREASING (BFD)
 // =====================================================
 Solution Builder::bestFitDecreasing(const VSBPPCInstance& inst,
-                                    double kw, double kc) {
+                                    int kw, int kc) {
     Solution sol(inst, kw, kc);
 
     std::vector<int> order(inst.N);
