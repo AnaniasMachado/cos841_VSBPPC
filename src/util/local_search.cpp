@@ -280,30 +280,45 @@ bool LocalSearch::classic() {
         return false;
     }
 
+    bool overallImproved = false;
+
     std::vector<int> order = {0, 1, 2};
     std::shuffle(order.begin(), order.end(), rng);
 
-    bool improved = false;
+    while (!solution->isFeasible()) {
+        bool improvedThisLoop = false;
 
-    for (int op : order) {
-        bool moved = false;
+        for (int op : order) {
+            bool moved = false;
 
-        switch (op) {
-            case 0: moved = relocate();     break;
-            case 1: moved = exchange();     break;
-            case 2: moved = exchange21();   break;
+            switch (op) {
+                case 0:
+                    moved = relocate();
+                    break;
+                case 1:
+                    moved = exchange();
+                    break;
+                case 2:
+                    moved = exchange21();
+                    break;
+            }
+
+            if (moved) {
+                improvedThisLoop = true;
+                overallImproved = true;
+            }
+
+            if (solution->isFeasible()) {
+                break;
+            }
         }
 
-        if (moved) {
-            improved = true;
-        }
-
-        if (solution->isFeasible()) {
+        if (!improvedThisLoop) {
             break;
         }
     }
 
-    return improved;
+    return overallImproved;
 }
 
 // ---- Ejection Global ----
