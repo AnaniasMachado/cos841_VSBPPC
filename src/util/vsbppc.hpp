@@ -1,9 +1,10 @@
-#ifndef BPPC_H
-#define BPPC_H
+#ifndef VSBPPC_HPP
+#define VSBPPC_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
 #include <cstdint>
+#include <algorithm>
 
 enum class InstanceSet {
     SET1,
@@ -16,6 +17,12 @@ enum class CostType {
     CONCAVE
 };
 
+enum class BinSizeSetting {
+    THREE_TYPES,
+    FIVE_TYPES,
+    SEVEN_TYPES
+};
+
 struct BinType {
     int capacity;
     int cost;
@@ -25,13 +32,14 @@ class VSBPPCInstance {
 public:
     int N;
     std::vector<int> weights;
-
-    // Hybrid representation
-    std::vector<std::vector<uint64_t>> conflicts; // bitset
-    std::vector<std::vector<int>> neighbors;      // adjacency list
+    std::vector<std::vector<uint64_t>> conflicts;
+    std::vector<std::vector<int>> neighbors;
     std::vector<int> degree;
-
     std::vector<BinType> binTypes;
+
+    InstanceSet setType;
+    CostType costType;
+    BinSizeSetting binSizeSetting;
 
     VSBPPCInstance(
         int N_,
@@ -39,7 +47,9 @@ public:
         std::vector<std::vector<uint64_t>> conflicts_,
         std::vector<std::vector<int>> neighbors_,
         std::vector<int> degree_,
-        std::vector<BinType> binTypes_
+        InstanceSet setType_,
+        CostType costType_,
+        BinSizeSetting binSizeSetting_
     );
 
     void print() const;
@@ -49,7 +59,8 @@ public:
 VSBPPCInstance readInstance(
     const std::string& filename,
     InstanceSet setType,
-    CostType costType = CostType::LINEAR
+    CostType costType,
+    BinSizeSetting binSizeSetting
 );
 
 #endif

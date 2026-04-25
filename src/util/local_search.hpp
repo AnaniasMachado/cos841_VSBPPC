@@ -3,6 +3,11 @@
 
 #include "solution.hpp"
 #include <random>
+#include <algorithm>
+#include <limits>
+#include <climits>
+#include <unordered_set>
+#include <numeric>
 
 enum class ImprovementType {
     FI,
@@ -23,6 +28,13 @@ public:
     bool relocate();
     bool exchange();
     bool exchange21();
+    bool classic();
+    bool ejectionGlobal();
+    int hungarian(const std::vector<std::vector<int>>& cost,
+                std::vector<int>& assignment);
+    bool assignment(int N_ASSIGN);
+    bool ejectionChain();
+    bool grenade();
 
     void setSolution(Solution& sol);
 

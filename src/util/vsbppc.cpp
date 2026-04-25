@@ -5,28 +5,31 @@
 #include <cmath>
 #include <stdexcept>
 
-// ---- Constructor ----
-VSBPPCInstance::VSBPPCInstance(
-    int N_,
-    std::vector<int> weights_,
-    std::vector<std::vector<uint64_t>> conflicts_,
-    std::vector<std::vector<int>> neighbors_,
-    std::vector<int> degree_,
-    std::vector<BinType> binTypes_)
-    : N(N_),
-      weights(std::move(weights_)),
-      conflicts(std::move(conflicts_)),
-      neighbors(std::move(neighbors_)),
-      degree(std::move(degree_)),
-      binTypes(std::move(binTypes_)) {}
-
 // ---- Bin types ----
-static std::vector<BinType> buildBinTypes(InstanceSet setType, CostType costType) {
+static std::vector<BinType> buildBinTypes(
+    InstanceSet setType,
+    CostType costType,
+    BinSizeSetting binSizeSetting) {
+
     std::vector<int> capacities;
 
     if (setType == InstanceSet::SET1) {
-        capacities = {60, 80, 100, 120, 150};
+        if (binSizeSetting == BinSizeSetting::THREE_TYPES) {
+            capacities = {100, 120, 150};
+        } else if (binSizeSetting == BinSizeSetting::FIVE_TYPES) {
+            capacities = {60, 80, 100, 120, 150};
+        } else {
+            throw std::runtime_error(
+                "Invalid bin size setting for Set-1. Use THREE_TYPES or FIVE_TYPES."
+            );
+        }
     } else {
+        if (binSizeSetting != BinSizeSetting::SEVEN_TYPES) {
+            throw std::runtime_error(
+                "Invalid bin size setting for Set-2. Use SEVEN_TYPES."
+            );
+        }
+
         capacities = {70, 100, 130, 160, 190, 220, 250};
     }
 
@@ -47,8 +50,33 @@ static std::vector<BinType> buildBinTypes(InstanceSet setType, CostType costType
         types.push_back({c, cost});
     }
 
+    std::sort(types.begin(), types.end(),
+        [](const BinType& a, const BinType& b) {
+            return a.capacity < b.capacity;
+        });
+
     return types;
 }
+
+// ---- Constructor ----
+VSBPPCInstance::VSBPPCInstance(
+    int N_,
+    std::vector<int> weights_,
+    std::vector<std::vector<uint64_t>> conflicts_,
+    std::vector<std::vector<int>> neighbors_,
+    std::vector<int> degree_,
+    InstanceSet setType_,
+    CostType costType_,
+    BinSizeSetting binSizeSetting_)
+    : N(N_),
+      weights(std::move(weights_)),
+      conflicts(std::move(conflicts_)),
+      neighbors(std::move(neighbors_)),
+      degree(std::move(degree_)),
+      setType(setType_),
+      costType(costType_),
+      binSizeSetting(binSizeSetting_),
+      binTypes(buildBinTypes(setType_, costType_, binSizeSetting_)) {}
 
 // ---- Print ----
 void VSBPPCInstance::print() const {
@@ -107,7 +135,9 @@ void VSBPPCInstance::printStatistics() const {
 VSBPPCInstance readInstance(
     const std::string& filename,
     InstanceSet setType,
-    CostType costType) {
+    CostType costType,
+    BinSizeSetting binSizeSetting) {
+
     std::ifstream file(filename);
     if (!file) {
         throw std::runtime_error("Error opening file: " + filename);
@@ -126,6 +156,24 @@ VSBPPCInstance readInstance(
 
     std::vector<std::vector<int>> neighbors(N);
     std::vector<int> degree(N, 0);
+
+    auto addConflictEdge = [&](int i, int j) {
+        if (i < 0 || i >= N || j < 0 || j >= N || i == j) return;
+
+        int wordJ = j >> 6;
+        int bitJ  = j & 63;
+
+        if (conflicts[i][wordJ] & (1ULL << bitJ)) return;
+
+        conflicts[i][wordJ] |= (1ULL << bitJ);
+        conflicts[j][i >> 6] |= (1ULL << (i & 63));
+
+        neighbors[i].push_back(j);
+        neighbors[j].push_back(i);
+
+        degree[i]++;
+        degree[j]++;
+    };
 
     int idx, w;
     while (file >> idx >> w) {
@@ -147,23 +195,38 @@ VSBPPCInstance readInstance(
 
             if (a < 0 || a >= N || a == idx) continue;
 
-            int word = a >> 6;
-            int bit  = a & 63;
+            addConflictEdge(idx, a);
+        }
+    }
 
-            if (!(conflicts[idx][word] & (1ULL << bit))) {
-                conflicts[idx][word] |= (1ULL << bit);
-                conflicts[a][idx >> 6] |= (1ULL << (idx & 63));
+    // =====================================================
+    // EXTENDED CONFLICT GRAPH
+    // Comment/uncomment this block to compare behavior.
+    //
+    // If two items cannot fit together in the largest bin,
+    // they are treated as conflicting, as in Ekici (2023).
+    // =====================================================
+    std::vector<BinType> binTypes =
+        buildBinTypes(setType, costType, binSizeSetting);
 
-                neighbors[idx].push_back(a);
-                neighbors[a].push_back(idx);
+    int maxCapacity = binTypes.back().capacity;
 
-                degree[idx]++;
-                degree[a]++;
+    for (int i = 0; i < N; ++i) {
+        for (int j = i + 1; j < N; ++j) {
+            if (weights[i] + weights[j] > maxCapacity) {
+                addConflictEdge(i, j);
             }
         }
     }
 
-    auto binTypes = buildBinTypes(setType, costType);
-
-    return VSBPPCInstance(N, weights, conflicts, neighbors, degree, binTypes);
+    return VSBPPCInstance(
+        N,
+        weights,
+        conflicts,
+        neighbors,
+        degree,
+        setType,
+        costType,
+        binSizeSetting
+    );
 }

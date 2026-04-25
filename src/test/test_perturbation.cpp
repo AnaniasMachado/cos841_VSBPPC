@@ -45,6 +45,7 @@ int main() {
 
     InstanceSet setType = InstanceSet::SET1;
     CostType costType = CostType::LINEAR;
+    BinSizeSetting binSizeSetting = BinSizeSetting::THREE_TYPES;
 
     int kw = 1000;
     int kc = 1000;
@@ -52,7 +53,7 @@ int main() {
     unsigned int seed = 42;
     std::mt19937 rng(seed);
 
-    VSBPPCInstance inst = readInstance(filename, setType, costType);
+    VSBPPCInstance inst = readInstance(filename, setType, costType, binSizeSetting);
 
     std::cout << "Instance loaded: N = " << inst.N << "\n\n";
 

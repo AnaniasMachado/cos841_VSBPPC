@@ -7,10 +7,11 @@ int main() {
     std::string filename = "../instances/set_1/N_100/Correia_Random_1_1_1_1.txt";
 
     InstanceSet setType = InstanceSet::SET1;
-    CostType costType   = CostType::LINEAR;
+    CostType costType = CostType::LINEAR;
+    BinSizeSetting binSizeSetting = BinSizeSetting::THREE_TYPES;
 
     // ---- Read instance ----
-    VSBPPCInstance instance = readInstance(filename, setType, costType);
+    VSBPPCInstance instance = readInstance(filename, setType, costType, binSizeSetting);
 
     std::cout << "Instance successfully read!\n\n";
 
