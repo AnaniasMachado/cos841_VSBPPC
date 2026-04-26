@@ -285,7 +285,7 @@ bool LocalSearch::classic() {
     std::vector<int> order = {0, 1, 2};
     std::shuffle(order.begin(), order.end(), rng);
 
-    while (!solution->isFeasible()) {
+    while (true) {
         bool improvedThisLoop = false;
 
         for (int op : order) {
@@ -344,7 +344,7 @@ bool LocalSearch::ejectionGlobal() {
     };
 
     auto compactSolution = [&](const Solution& src) -> Solution {
-        Solution compact(src.inst, src.kw, src.kc, src.autoBinSizing);
+        Solution compact(src.inst, src.kw, src.kc);
 
         int nextBin = 0;
         for (int b = 0; b < src.B; ++b) {

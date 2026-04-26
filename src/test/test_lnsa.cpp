@@ -11,22 +11,20 @@ int main() {
     // =========================
     // Parameters to edit
     // =========================
-    std::string instanceFile = "../instances/set_1/N_1000_idx_2/Correia_Random_4_1_8_1.txt";
+    // std::string instanceFile = "../instances/set_1/N_1000_idx_2/Correia_Random_4_1_8_1.txt";
+    std::string instanceFile = "../instances/set_1/N_100/Correia_Random_1_1_1_1.txt";
 
     const InstanceSet setType = InstanceSet::SET1;
     const CostType costType = CostType::LINEAR;
     const BinSizeSetting binSizeSetting = BinSizeSetting::THREE_TYPES;
 
-    const int iterations = 200;
-    const int destroyPercent = 20;
+    const int iterationLimit = 120;
+    const int destroyPercent = 25;
     std::mt19937 rng(42);
 
     // Penalties used by your Solution objective for infeasible states.
     const int kw = 1000;
     const int kc = 1000;
-
-    // Optional, only for reporting gap. Set <= 0 to disable.
-    const double lowerBound = 0.0;
 
     try {
         VSBPPCInstance inst = readInstance(
@@ -40,8 +38,9 @@ int main() {
         inst.printStatistics();
 
         LNSAParams params;
-        params.iterationLimit = iterations;
+        params.iterationLimit = iterationLimit;
         params.destroyPercent = destroyPercent;
+        params.mode = LNSAMode::SFC;
 
         // =========================
         // Start timing
@@ -62,13 +61,7 @@ int main() {
         std::cout << "Total excess: " << best.totalExcess << "\n";
         std::cout << "Total conflicts: " << best.totalConflicts << "\n";
 
-        std::cout << std::fixed << std::setprecision(6);
         std::cout << "Runtime (s): " << elapsed.count() << "\n";
-
-        if (lowerBound > 0.0) {
-            double gap = (best.computeObjective() - lowerBound) / lowerBound * 100.0;
-            std::cout << "Gap (%): " << gap << "\n";
-        }
 
         return 0;
     } catch (const std::exception& e) {

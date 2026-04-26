@@ -21,17 +21,13 @@ public:
     // load
     std::vector<int> binLoad;
     std::vector<int> binType;
-    bool autoBinSizing;
-    // size level of each bin (same as binType, but explicit for clarity)
-    std::vector<int> binLevel;
-    // maximum level (same for all bins in an instance)
-    int maxBinLevel;
 
     // conflicts
     std::vector<std::vector<int>> confCount; // confCount[i][b]
     std::vector<int> binConflicts;           // conflicts per bin
 
     // stats
+    long long totalBinCost;
     long long totalConflicts;
     long long totalExcess;
 
@@ -40,8 +36,7 @@ public:
 
     Solution(const VSBPPCInstance& instance,
          int kw_,
-         int kc_,
-         bool autoBinSizing_ = true);
+         int kc_);
 
     void addItem(int i, int b);
     void removeItem(int i);
@@ -63,7 +58,5 @@ int deltaSwapSubsets(
     const std::vector<int>& A, // from b1 -> b2
     const std::vector<int>& B, // from b2 -> b1
     int b1, int b2);
-
-int deltaIncreaseBinLevel(const Solution& sol, int b);
 
 #endif

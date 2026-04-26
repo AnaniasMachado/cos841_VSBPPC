@@ -1,0 +1,460 @@
+instance_file ../instances/set_1/N_1000/Correia_Random_4_1_10_3.txt
+config set1_3types_linear
+mode vanilla
+run 4
+seed 45
+start_time 2026-04-26 16:24:09
+iteration_limit 200
+destroy_percent 20
+status FEASIBLE
+runtime 12.661175
+objective 51260.000000
+total_bin_cost 51260
+total_excess 0
+total_conflicts 0
+
+solution
+bin 0 type 0 capacity 100 cost 100 items 571 load 100
+bin 1 type 0 capacity 100 cost 100 items 196 923 load 100
+bin 2 type 0 capacity 100 cost 100 items 297 17 load 100
+bin 3 type 0 capacity 100 cost 100 items 178 356 load 80
+bin 4 type 0 capacity 100 cost 100 items 193 607 946 load 93
+bin 5 type 1 capacity 120 cost 120 items 876 606 load 119
+bin 6 type 0 capacity 100 cost 100 items 2 212 load 100
+bin 7 type 1 capacity 120 cost 120 items 357 932 load 119
+bin 8 type 0 capacity 100 cost 100 items 595 587 load 100
+bin 9 type 0 capacity 100 cost 100 items 847 11 load 99
+bin 10 type 0 capacity 100 cost 100 items 96 279 load 100
+bin 11 type 2 capacity 150 cost 150 items 768 54 709 load 146
+bin 12 type 0 capacity 100 cost 100 items 885 292 load 99
+bin 13 type 0 capacity 100 cost 100 items 335 281 load 99
+bin 14 type 0 capacity 100 cost 100 items 570 227 load 100
+bin 15 type 0 capacity 100 cost 100 items 610 374 load 98
+bin 16 type 0 capacity 100 cost 100 items 750 984 load 100
+bin 17 type 0 capacity 100 cost 100 items 968 247 load 99
+bin 18 type 0 capacity 100 cost 100 items 142 662 load 99
+bin 19 type 0 capacity 100 cost 100 items 350 864 load 98
+bin 20 type 2 capacity 150 cost 150 items 757 575 43 load 150
+bin 21 type 0 capacity 100 cost 100 items 911 345 load 98
+bin 22 type 0 capacity 100 cost 100 items 98 793 load 99
+bin 23 type 1 capacity 120 cost 120 items 493 78 load 118
+bin 24 type 0 capacity 100 cost 100 items 353 266 load 98
+bin 25 type 0 capacity 100 cost 100 items 646 39 load 97
+bin 26 type 0 capacity 100 cost 100 items 705 47 load 99
+bin 27 type 0 capacity 100 cost 100 items 163 load 100
+bin 28 type 0 capacity 100 cost 100 items 988 678 load 98
+bin 29 type 2 capacity 150 cost 150 items 955 654 777 load 150
+bin 30 type 2 capacity 150 cost 150 items 264 882 304 load 128
+bin 31 type 0 capacity 100 cost 100 items 402 609 load 92
+bin 32 type 0 capacity 100 cost 100 items 410 670 load 99
+bin 33 type 1 capacity 120 cost 120 items 106 105 load 120
+bin 34 type 0 capacity 100 cost 100 items 555 192 load 100
+bin 35 type 2 capacity 150 cost 150 items 649 759 load 131
+bin 36 type 1 capacity 120 cost 120 items 220 294 load 120
+bin 37 type 0 capacity 100 cost 100 items 280 388 load 100
+bin 38 type 0 capacity 100 cost 100 items 288 514 load 94
+bin 39 type 0 capacity 100 cost 100 items 317 90 load 100
+bin 40 type 0 capacity 100 cost 100 items 372 454 load 99
+bin 41 type 1 capacity 120 cost 120 items 450 729 936 load 116
+bin 42 type 0 capacity 100 cost 100 items 780 501 load 99
+bin 43 type 0 capacity 100 cost 100 items 816 576 load 98
+bin 44 type 0 capacity 100 cost 100 items 921 121 load 99
+bin 45 type 1 capacity 120 cost 120 items 257 899 62 load 116
+bin 46 type 1 capacity 120 cost 120 items 404 843 load 111
+bin 47 type 0 capacity 100 cost 100 items 423 706 load 92
+bin 48 type 0 capacity 100 cost 100 items 462 267 load 99
+bin 49 type 0 capacity 100 cost 100 items 820 214 529 load 100
+bin 50 type 0 capacity 100 cost 100 items 83 676 load 97
+bin 51 type 1 capacity 120 cost 120 items 95 30 load 118
+bin 52 type 1 capacity 120 cost 120 items 836 167 load 114
+bin 53 type 0 capacity 100 cost 100 items 761 810 load 98
+bin 54 type 0 capacity 100 cost 100 items 285 534 load 100
+bin 55 type 2 capacity 150 cost 150 items 543 929 403 load 146
+bin 56 type 1 capacity 120 cost 120 items 808 913 803 load 105
+bin 57 type 1 capacity 120 cost 120 items 842 137 load 119
+bin 58 type 1 capacity 120 cost 120 items 72 250 775 load 117
+bin 59 type 1 capacity 120 cost 120 items 364 714 load 120
+bin 60 type 0 capacity 100 cost 100 items 478 99 load 99
+bin 61 type 0 capacity 100 cost 100 items 614 516 load 98
+bin 62 type 0 capacity 100 cost 100 items 507 306 load 99
+bin 63 type 1 capacity 120 cost 120 items 592 725 load 119
+bin 64 type 2 capacity 150 cost 150 items 733 942 217 load 148
+bin 65 type 1 capacity 120 cost 120 items 203 8 load 117
+bin 66 type 2 capacity 150 cost 150 items 469 747 load 134
+bin 67 type 2 capacity 150 cost 150 items 870 263 273 load 147
+bin 68 type 0 capacity 100 cost 100 items 378 652 971 load 99
+bin 69 type 0 capacity 100 cost 100 items 708 248 load 96
+bin 70 type 1 capacity 120 cost 120 items 111 624 load 117
+bin 71 type 1 capacity 120 cost 120 items 229 187 load 115
+bin 72 type 0 capacity 100 cost 100 items 405 765 load 99
+bin 73 type 0 capacity 100 cost 100 items 622 796 209 load 99
+bin 74 type 2 capacity 150 cost 150 items 686 661 367 load 150
+bin 75 type 0 capacity 100 cost 100 items 856 198 load 99
+bin 76 type 0 capacity 100 cost 100 items 472 189 load 99
+bin 77 type 2 capacity 150 cost 150 items 549 651 753 load 147
+bin 78 type 1 capacity 120 cost 120 items 717 730 load 117
+bin 79 type 1 capacity 120 cost 120 items 515 432 381 load 120
+bin 80 type 1 capacity 120 cost 120 items 639 13 load 109
+bin 81 type 1 capacity 120 cost 120 items 769 879 load 120
+bin 82 type 1 capacity 120 cost 120 items 467 704 126 load 116
+bin 83 type 1 capacity 120 cost 120 items 731 497 load 118
+bin 84 type 0 capacity 100 cost 100 items 518 277 load 97
+bin 85 type 1 capacity 120 cost 120 items 584 431 load 120
+bin 86 type 0 capacity 100 cost 100 items 522 903 load 99
+bin 87 type 0 capacity 100 cost 100 items 602 334 load 99
+bin 88 type 0 capacity 100 cost 100 items 905 935 load 100
+bin 89 type 2 capacity 150 cost 150 items 552 46 399 load 147
+bin 90 type 0 capacity 100 cost 100 items 687 336 load 99
+bin 91 type 1 capacity 120 cost 120 items 45 563 load 119
+bin 92 type 1 capacity 120 cost 120 items 138 312 736 load 113
+bin 93 type 0 capacity 100 cost 100 items 228 604 load 95
+bin 94 type 0 capacity 100 cost 100 items 344 242 load 95
+bin 95 type 1 capacity 120 cost 120 items 941 783 load 115
+bin 96 type 0 capacity 100 cost 100 items 315 389 801 load 99
+bin 97 type 1 capacity 120 cost 120 items 448 641 load 120
+bin 98 type 0 capacity 100 cost 100 items 498 728 887 load 99
+bin 99 type 1 capacity 120 cost 120 items 525 826 load 108
+bin 100 type 0 capacity 100 cost 100 items 598 620 461 load 98
+bin 101 type 0 capacity 100 cost 100 items 868 load 97
+bin 102 type 0 capacity 100 cost 100 items 626 524 load 96
+bin 103 type 2 capacity 150 cost 150 items 863 28 960 load 148
+bin 104 type 0 capacity 100 cost 100 items 56 213 load 99
+bin 105 type 1 capacity 120 cost 120 items 574 343 42 load 120
+bin 106 type 2 capacity 150 cost 150 items 146 572 985 load 150
+bin 107 type 0 capacity 100 cost 100 items 681 376 66 load 98
+bin 108 type 2 capacity 150 cost 150 items 129 116 880 load 130
+bin 109 type 0 capacity 100 cost 100 items 451 104 load 95
+bin 110 type 1 capacity 120 cost 120 items 502 460 422 load 114
+bin 111 type 1 capacity 120 cost 120 items 102 702 load 120
+bin 112 type 2 capacity 150 cost 150 items 360 958 load 149
+bin 113 type 0 capacity 100 cost 100 items 421 965 509 load 96
+bin 114 type 1 capacity 120 cost 120 items 893 58 load 120
+bin 115 type 1 capacity 120 cost 120 items 553 871 558 load 115
+bin 116 type 1 capacity 120 cost 120 items 249 991 513 load 119
+bin 117 type 0 capacity 100 cost 100 items 517 268 load 100
+bin 118 type 1 capacity 120 cost 120 items 993 505 load 115
+bin 119 type 1 capacity 120 cost 120 items 919 396 207 load 120
+bin 120 type 0 capacity 100 cost 100 items 397 239 load 98
+bin 121 type 0 capacity 100 cost 100 items 682 566 load 97
+bin 122 type 0 capacity 100 cost 100 items 499 202 load 99
+bin 123 type 1 capacity 120 cost 120 items 0 917 load 119
+bin 124 type 0 capacity 100 cost 100 items 296 354 load 94
+bin 125 type 1 capacity 120 cost 120 items 428 333 415 load 117
+bin 126 type 0 capacity 100 cost 100 items 805 349 load 80
+bin 127 type 0 capacity 100 cost 100 items 449 316 load 100
+bin 128 type 0 capacity 100 cost 100 items 564 100 load 99
+bin 129 type 0 capacity 100 cost 100 items 605 308 load 100
+bin 130 type 0 capacity 100 cost 100 items 183 908 load 96
+bin 131 type 1 capacity 120 cost 120 items 159 599 488 load 120
+bin 132 type 2 capacity 150 cost 150 items 627 834 722 load 132
+bin 133 type 0 capacity 100 cost 100 items 589 435 152 load 98
+bin 134 type 0 capacity 100 cost 100 items 647 791 612 load 100
+bin 135 type 0 capacity 100 cost 100 items 889 430 load 96
+bin 136 type 1 capacity 120 cost 120 items 734 382 load 108
+bin 137 type 2 capacity 150 cost 150 items 114 840 load 143
+bin 138 type 0 capacity 100 cost 100 items 539 123 load 100
+bin 139 type 1 capacity 120 cost 120 items 548 57 load 116
+bin 140 type 0 capacity 100 cost 100 items 73 373 load 96
+bin 141 type 0 capacity 100 cost 100 items 216 749 load 95
+bin 142 type 1 capacity 120 cost 120 items 375 107 load 116
+bin 143 type 0 capacity 100 cost 100 items 593 696 load 94
+bin 144 type 0 capacity 100 cost 100 items 890 735 load 99
+bin 145 type 2 capacity 150 cost 150 items 485 398 902 load 147
+bin 146 type 0 capacity 100 cost 100 items 977 727 790 load 98
+bin 147 type 0 capacity 100 cost 100 items 124 71 load 99
+bin 148 type 1 capacity 120 cost 120 items 578 823 load 120
+bin 149 type 2 capacity 150 cost 150 items 190 14 93 load 150
+bin 150 type 1 capacity 120 cost 120 items 891 500 load 120
+bin 151 type 2 capacity 150 cost 150 items 393 986 load 142
+bin 152 type 1 capacity 120 cost 120 items 68 287 load 118
+bin 153 type 2 capacity 150 cost 150 items 305 474 894 load 144
+bin 154 type 1 capacity 120 cost 120 items 909 476 load 117
+bin 155 type 0 capacity 100 cost 100 items 995 119 load 100
+bin 156 type 0 capacity 100 cost 100 items 710 633 load 95
+bin 157 type 1 capacity 120 cost 120 items 234 787 load 113
+bin 158 type 0 capacity 100 cost 100 items 912 480 load 98
+bin 159 type 1 capacity 120 cost 120 items 88 377 load 119
+bin 160 type 1 capacity 120 cost 120 items 556 135 load 118
+bin 161 type 2 capacity 150 cost 150 items 429 674 253 load 132
+bin 162 type 1 capacity 120 cost 120 items 695 272 972 load 109
+bin 163 type 0 capacity 100 cost 100 items 776 161 884 load 97
+bin 164 type 1 capacity 120 cost 120 items 309 814 load 114
+bin 165 type 0 capacity 100 cost 100 items 365 703 load 98
+bin 166 type 1 capacity 120 cost 120 items 684 481 load 111
+bin 167 type 0 capacity 100 cost 100 items 526 583 load 98
+bin 168 type 0 capacity 100 cost 100 items 471 205 load 99
+bin 169 type 1 capacity 120 cost 120 items 998 916 506 load 115
+bin 170 type 2 capacity 150 cost 150 items 370 50 40 load 144
+bin 171 type 2 capacity 150 cost 150 items 326 726 load 150
+bin 172 type 2 capacity 150 cost 150 items 632 819 load 150
+bin 173 type 0 capacity 100 cost 100 items 668 38 load 100
+bin 174 type 1 capacity 120 cost 120 items 849 243 load 120
+bin 175 type 2 capacity 150 cost 150 items 482 437 load 149
+bin 176 type 1 capacity 120 cost 120 items 835 945 load 119
+bin 177 type 1 capacity 120 cost 120 items 433 439 load 119
+bin 178 type 1 capacity 120 cost 120 items 545 770 load 120
+bin 179 type 0 capacity 100 cost 100 items 630 756 load 99
+bin 180 type 0 capacity 100 cost 100 items 760 420 load 100
+bin 181 type 2 capacity 150 cost 150 items 175 664 341 load 144
+bin 182 type 0 capacity 100 cost 100 items 188 185 load 99
+bin 183 type 0 capacity 100 cost 100 items 221 445 load 99
+bin 184 type 1 capacity 120 cost 120 items 656 181 947 load 116
+bin 185 type 0 capacity 100 cost 100 items 732 798 load 99
+bin 186 type 1 capacity 120 cost 120 items 200 591 load 107
+bin 187 type 0 capacity 100 cost 100 items 327 325 load 100
+bin 188 type 2 capacity 150 cost 150 items 321 927 586 load 141
+bin 189 type 2 capacity 150 cost 150 items 15 573 625 load 148
+bin 190 type 2 capacity 150 cost 150 items 144 436 716 load 149
+bin 191 type 0 capacity 100 cost 100 items 697 743 load 100
+bin 192 type 2 capacity 150 cost 150 items 477 70 load 149
+bin 193 type 0 capacity 100 cost 100 items 148 53 load 100
+bin 194 type 1 capacity 120 cost 120 items 491 208 load 117
+bin 195 type 2 capacity 150 cost 150 items 560 197 load 146
+bin 196 type 0 capacity 100 cost 100 items 797 611 load 97
+bin 197 type 0 capacity 100 cost 100 items 831 746 load 95
+bin 198 type 1 capacity 120 cost 120 items 636 223 load 111
+bin 199 type 0 capacity 100 cost 100 items 443 665 258 load 91
+bin 200 type 1 capacity 120 cost 120 items 943 20 load 120
+bin 201 type 0 capacity 100 cost 100 items 447 225 load 100
+bin 202 type 1 capacity 120 cost 120 items 282 4 400 load 114
+bin 203 type 0 capacity 100 cost 100 items 323 224 load 99
+bin 204 type 0 capacity 100 cost 100 items 635 795 load 97
+bin 205 type 0 capacity 100 cost 100 items 675 240 load 95
+bin 206 type 0 capacity 100 cost 100 items 35 441 load 99
+bin 207 type 1 capacity 120 cost 120 items 817 962 load 119
+bin 208 type 1 capacity 120 cost 120 items 883 896 load 116
+bin 209 type 2 capacity 150 cost 150 items 699 252 872 load 148
+bin 210 type 1 capacity 120 cost 120 items 806 781 411 load 117
+bin 211 type 1 capacity 120 cost 120 items 125 680 load 113
+bin 212 type 0 capacity 100 cost 100 items 858 172 load 100
+bin 213 type 0 capacity 100 cost 100 items 937 961 load 95
+bin 214 type 2 capacity 150 cost 150 items 720 867 18 load 140
+bin 215 type 2 capacity 150 cost 150 items 390 6 load 145
+bin 216 type 2 capacity 150 cost 150 items 293 679 108 load 130
+bin 217 type 0 capacity 100 cost 100 items 838 463 load 76
+bin 218 type 0 capacity 100 cost 100 items 274 969 186 load 87
+bin 219 type 0 capacity 100 cost 100 items 520 150 load 99
+bin 220 type 0 capacity 100 cost 100 items 177 load 100
+bin 221 type 0 capacity 100 cost 100 items 358 101 load 98
+bin 222 type 0 capacity 100 cost 100 items 596 199 load 99
+bin 223 type 1 capacity 120 cost 120 items 554 380 load 117
+bin 224 type 1 capacity 120 cost 120 items 648 338 417 load 120
+bin 225 type 1 capacity 120 cost 120 items 628 511 418 load 119
+bin 226 type 2 capacity 150 cost 150 items 638 693 637 load 140
+bin 227 type 2 capacity 150 cost 150 items 22 61 807 load 143
+bin 228 type 2 capacity 150 cost 150 items 671 494 12 load 149
+bin 229 type 0 capacity 100 cost 100 items 5 672 load 99
+bin 230 type 0 capacity 100 cost 100 items 80 300 load 99
+bin 231 type 1 capacity 120 cost 120 items 644 866 load 118
+bin 232 type 0 capacity 100 cost 100 items 934 640 load 96
+bin 233 type 0 capacity 100 cost 100 items 660 869 load 100
+bin 234 type 1 capacity 120 cost 120 items 27 906 load 116
+bin 235 type 2 capacity 150 cost 150 items 744 409 load 150
+bin 236 type 0 capacity 100 cost 100 items 690 904 load 92
+bin 237 type 0 capacity 100 cost 100 items 302 147 load 97
+bin 238 type 1 capacity 120 cost 120 items 387 915 348 load 120
+bin 239 type 1 capacity 120 cost 120 items 76 989 218 load 112
+bin 240 type 1 capacity 120 cost 120 items 340 164 load 116
+bin 241 type 2 capacity 150 cost 150 items 852 332 897 load 141
+bin 242 type 0 capacity 100 cost 100 items 979 957 load 87
+bin 243 type 0 capacity 100 cost 100 items 395 262 load 97
+bin 244 type 0 capacity 100 cost 100 items 691 825 load 100
+bin 245 type 1 capacity 120 cost 120 items 162 23 load 119
+bin 246 type 0 capacity 100 cost 100 items 291 91 load 100
+bin 247 type 1 capacity 120 cost 120 items 772 510 load 119
+bin 248 type 2 capacity 150 cost 150 items 737 950 load 146
+bin 249 type 0 capacity 100 cost 100 items 643 715 load 99
+bin 250 type 0 capacity 100 cost 100 items 931 707 load 99
+bin 251 type 0 capacity 100 cost 100 items 473 9 load 100
+bin 252 type 0 capacity 100 cost 100 items 949 406 load 100
+bin 253 type 0 capacity 100 cost 100 items 134 745 load 98
+bin 254 type 0 capacity 100 cost 100 items 231 444 load 100
+bin 255 type 0 capacity 100 cost 100 items 711 394 load 98
+bin 256 type 0 capacity 100 cost 100 items 910 392 load 100
+bin 257 type 0 capacity 100 cost 100 items 174 65 load 97
+bin 258 type 0 capacity 100 cost 100 items 580 809 load 99
+bin 259 type 1 capacity 120 cost 120 items 579 851 load 115
+bin 260 type 1 capacity 120 cost 120 items 590 629 load 120
+bin 261 type 2 capacity 150 cost 150 items 881 347 412 load 138
+bin 262 type 1 capacity 120 cost 120 items 191 828 366 load 118
+bin 263 type 1 capacity 120 cost 120 items 613 470 load 119
+bin 264 type 1 capacity 120 cost 120 items 800 495 load 106
+bin 265 type 0 capacity 100 cost 100 items 532 55 load 97
+bin 266 type 2 capacity 150 cost 150 items 581 959 978 load 131
+bin 267 type 0 capacity 100 cost 100 items 303 688 load 100
+bin 268 type 0 capacity 100 cost 100 items 64 763 load 93
+bin 269 type 1 capacity 120 cost 120 items 169 265 load 119
+bin 270 type 0 capacity 100 cost 100 items 973 440 425 load 91
+bin 271 type 2 capacity 150 cost 150 items 160 920 815 load 144
+bin 272 type 1 capacity 120 cost 120 items 547 120 143 load 119
+bin 273 type 0 capacity 100 cost 100 items 361 446 997 load 94
+bin 274 type 0 capacity 100 cost 100 items 79 789 load 96
+bin 275 type 2 capacity 150 cost 150 items 94 762 load 145
+bin 276 type 1 capacity 120 cost 120 items 846 419 74 load 108
+bin 277 type 1 capacity 120 cost 120 items 122 442 load 120
+bin 278 type 2 capacity 150 cost 150 items 689 383 load 136
+bin 279 type 1 capacity 120 cost 120 items 550 567 load 120
+bin 280 type 2 capacity 150 cost 150 items 713 408 load 143
+bin 281 type 2 capacity 150 cost 150 items 244 764 load 146
+bin 282 type 0 capacity 100 cost 100 items 541 25 load 100
+bin 283 type 2 capacity 150 cost 150 items 940 976 85 load 150
+bin 284 type 1 capacity 120 cost 120 items 452 89 load 120
+bin 285 type 0 capacity 100 cost 100 items 87 182 load 98
+bin 286 type 1 capacity 120 cost 120 items 845 466 load 118
+bin 287 type 2 capacity 150 cost 150 items 938 811 load 144
+bin 288 type 0 capacity 100 cost 100 items 1 723 load 100
+bin 289 type 0 capacity 100 cost 100 items 683 342 load 98
+bin 290 type 0 capacity 100 cost 100 items 561 855 967 load 100
+bin 291 type 0 capacity 100 cost 100 items 141 355 load 98
+bin 292 type 0 capacity 100 cost 100 items 792 456 load 100
+bin 293 type 2 capacity 150 cost 150 items 901 779 427 load 133
+bin 294 type 0 capacity 100 cost 100 items 877 540 load 99
+bin 295 type 0 capacity 100 cost 100 items 67 254 load 100
+bin 296 type 1 capacity 120 cost 120 items 634 618 load 118
+bin 297 type 1 capacity 120 cost 120 items 658 718 load 120
+bin 298 type 2 capacity 150 cost 150 items 740 970 346 load 138
+bin 299 type 0 capacity 100 cost 100 items 956 663 load 100
+bin 300 type 2 capacity 150 cost 150 items 24 850 827 load 148
+bin 301 type 2 capacity 150 cost 150 items 479 31 130 load 141
+bin 302 type 1 capacity 120 cost 120 items 655 804 888 load 113
+bin 303 type 0 capacity 100 cost 100 items 741 270 load 90
+bin 304 type 0 capacity 100 cost 100 items 10 964 load 89
+bin 305 type 2 capacity 150 cost 150 items 255 738 925 load 149
+bin 306 type 0 capacity 100 cost 100 items 631 386 276 load 100
+bin 307 type 2 capacity 150 cost 150 items 642 97 load 147
+bin 308 type 0 capacity 100 cost 100 items 77 926 load 93
+bin 309 type 1 capacity 120 cost 120 items 600 754 load 120
+bin 310 type 1 capacity 120 cost 120 items 886 585 724 load 120
+bin 311 type 1 capacity 120 cost 120 items 339 455 load 120
+bin 312 type 1 capacity 120 cost 120 items 483 975 load 118
+bin 313 type 2 capacity 150 cost 150 items 830 298 569 load 141
+bin 314 type 2 capacity 150 cost 150 items 184 324 844 load 148
+bin 315 type 0 capacity 100 cost 100 items 527 898 load 87
+bin 316 type 0 capacity 100 cost 100 items 530 157 load 96
+bin 317 type 1 capacity 120 cost 120 items 748 363 load 119
+bin 318 type 0 capacity 100 cost 100 items 832 597 load 100
+bin 319 type 0 capacity 100 cost 100 items 966 7 load 100
+bin 320 type 0 capacity 100 cost 100 items 878 771 load 67
+bin 321 type 1 capacity 120 cost 120 items 907 778 load 115
+bin 322 type 1 capacity 120 cost 120 items 320 416 load 116
+bin 323 type 1 capacity 120 cost 120 items 295 562 load 108
+bin 324 type 1 capacity 120 cost 120 items 755 963 865 load 114
+bin 325 type 0 capacity 100 cost 100 items 328 194 load 99
+bin 326 type 0 capacity 100 cost 100 items 616 256 load 100
+bin 327 type 0 capacity 100 cost 100 items 413 368 load 99
+bin 328 type 2 capacity 150 cost 150 items 458 195 837 load 127
+bin 329 type 0 capacity 100 cost 100 items 504 33 load 100
+bin 330 type 0 capacity 100 cost 100 items 822 299 489 load 99
+bin 331 type 0 capacity 100 cost 100 items 171 82 load 98
+bin 332 type 0 capacity 100 cost 100 items 60 322 load 96
+bin 333 type 0 capacity 100 cost 100 items 176 468 load 95
+bin 334 type 1 capacity 120 cost 120 items 351 19 236 load 117
+bin 335 type 0 capacity 100 cost 100 items 401 371 load 97
+bin 336 type 0 capacity 100 cost 100 items 36 712 load 93
+bin 337 type 2 capacity 150 cost 150 items 86 818 166 load 148
+bin 338 type 0 capacity 100 cost 100 items 414 32 load 100
+bin 339 type 0 capacity 100 cost 100 items 37 692 load 98
+bin 340 type 0 capacity 100 cost 100 items 875 41 load 98
+bin 341 type 1 capacity 120 cost 120 items 153 232 260 load 118
+bin 342 type 1 capacity 120 cost 120 items 490 128 49 load 118
+bin 343 type 1 capacity 120 cost 120 items 751 615 load 119
+bin 344 type 0 capacity 100 cost 100 items 861 557 load 98
+bin 345 type 0 capacity 100 cost 100 items 953 92 load 98
+bin 346 type 1 capacity 120 cost 120 items 982 948 load 117
+bin 347 type 2 capacity 150 cost 150 items 685 318 259 load 149
+bin 348 type 0 capacity 100 cost 100 items 359 766 load 100
+bin 349 type 1 capacity 120 cost 120 items 508 531 519 load 116
+bin 350 type 0 capacity 100 cost 100 items 528 457 load 98
+bin 351 type 1 capacity 120 cost 120 items 694 311 load 120
+bin 352 type 0 capacity 100 cost 100 items 269 544 load 92
+bin 353 type 1 capacity 120 cost 120 items 59 990 853 load 113
+bin 354 type 1 capacity 120 cost 120 items 542 140 860 load 101
+bin 355 type 1 capacity 120 cost 120 items 237 784 load 120
+bin 356 type 2 capacity 150 cost 150 items 568 486 load 141
+bin 357 type 2 capacity 150 cost 150 items 848 314 load 144
+bin 358 type 0 capacity 100 cost 100 items 538 996 load 100
+bin 359 type 0 capacity 100 cost 100 items 812 951 load 100
+bin 360 type 0 capacity 100 cost 100 items 667 load 98
+bin 361 type 2 capacity 150 cost 150 items 204 767 load 146
+bin 362 type 2 capacity 150 cost 150 items 154 219 700 load 146
+bin 363 type 2 capacity 150 cost 150 items 829 21 load 146
+bin 364 type 0 capacity 100 cost 100 items 434 222 load 98
+bin 365 type 0 capacity 100 cost 100 items 621 824 load 100
+bin 366 type 0 capacity 100 cost 100 items 657 698 load 99
+bin 367 type 0 capacity 100 cost 100 items 839 841 load 100
+bin 368 type 0 capacity 100 cost 100 items 521 617 load 99
+bin 369 type 2 capacity 150 cost 150 items 788 233 151 load 150
+bin 370 type 0 capacity 100 cost 100 items 465 145 load 99
+bin 371 type 1 capacity 120 cost 120 items 475 63 load 120
+bin 372 type 1 capacity 120 cost 120 items 438 26 load 118
+bin 373 type 2 capacity 150 cost 150 items 426 131 278 load 134
+bin 374 type 2 capacity 150 cost 150 items 892 215 load 146
+bin 375 type 0 capacity 100 cost 100 items 384 286 load 100
+bin 376 type 2 capacity 150 cost 150 items 3 313 load 141
+bin 377 type 0 capacity 100 cost 100 items 319 329 load 98
+bin 378 type 2 capacity 150 cost 150 items 821 284 551 load 146
+bin 379 type 1 capacity 120 cost 120 items 862 170 load 120
+bin 380 type 0 capacity 100 cost 100 items 362 666 load 97
+bin 381 type 0 capacity 100 cost 100 items 168 246 load 96
+bin 382 type 0 capacity 100 cost 100 items 52 981 786 load 100
+bin 383 type 0 capacity 100 cost 100 items 533 492 load 100
+bin 384 type 0 capacity 100 cost 100 items 537 110 load 100
+bin 385 type 0 capacity 100 cost 100 items 859 758 load 98
+bin 386 type 1 capacity 120 cost 120 items 987 289 103 load 118
+bin 387 type 0 capacity 100 cost 100 items 51 523 load 98
+bin 388 type 2 capacity 150 cost 150 items 261 914 230 load 135
+bin 389 type 1 capacity 120 cost 120 items 653 307 load 117
+bin 390 type 0 capacity 100 cost 100 items 930 275 load 94
+bin 391 type 1 capacity 120 cost 120 items 283 113 load 120
+bin 392 type 0 capacity 100 cost 100 items 310 608 load 100
+bin 393 type 1 capacity 120 cost 120 items 271 546 773 load 119
+bin 394 type 0 capacity 100 cost 100 items 785 136 load 98
+bin 395 type 0 capacity 100 cost 100 items 238 158 load 100
+bin 396 type 0 capacity 100 cost 100 items 407 774 load 96
+bin 397 type 0 capacity 100 cost 100 items 331 180 load 100
+bin 398 type 0 capacity 100 cost 100 items 623 81 load 100
+bin 399 type 1 capacity 120 cost 120 items 739 337 load 116
+bin 400 type 1 capacity 120 cost 120 items 918 117 load 111
+bin 401 type 1 capacity 120 cost 120 items 330 992 load 119
+bin 402 type 1 capacity 120 cost 120 items 980 179 load 119
+bin 403 type 2 capacity 150 cost 150 items 115 944 127 load 148
+bin 404 type 1 capacity 120 cost 120 items 577 601 load 119
+bin 405 type 0 capacity 100 cost 100 items 673 201 load 99
+bin 406 type 1 capacity 120 cost 120 items 379 112 load 120
+bin 407 type 1 capacity 120 cost 120 items 34 952 701 load 120
+bin 408 type 0 capacity 100 cost 100 items 874 721 load 88
+bin 409 type 2 capacity 150 cost 150 items 594 659 496 load 150
+bin 410 type 1 capacity 120 cost 120 items 512 559 load 119
+bin 411 type 1 capacity 120 cost 120 items 69 139 742 load 119
+bin 412 type 1 capacity 120 cost 120 items 149 802 load 105
+bin 413 type 1 capacity 120 cost 120 items 165 352 load 106
+bin 414 type 0 capacity 100 cost 100 items 155 391 load 100
+bin 415 type 0 capacity 100 cost 100 items 464 226 load 98
+bin 416 type 0 capacity 100 cost 100 items 582 48 load 100
+bin 417 type 0 capacity 100 cost 100 items 924 133 669 load 93
+bin 418 type 1 capacity 120 cost 120 items 29 173 load 116
+bin 419 type 0 capacity 100 cost 100 items 211 210 load 100
+bin 420 type 1 capacity 120 cost 120 items 536 44 load 113
+bin 421 type 1 capacity 120 cost 120 items 245 565 load 108
+bin 422 type 2 capacity 150 cost 150 items 84 369 load 140
+bin 423 type 1 capacity 120 cost 120 items 484 241 994 load 120
+bin 424 type 1 capacity 120 cost 120 items 650 619 load 116
+bin 425 type 2 capacity 150 cost 150 items 873 235 900 load 145
+bin 426 type 1 capacity 120 cost 120 items 16 453 load 117
+bin 427 type 0 capacity 100 cost 100 items 487 118 load 100
+bin 428 type 0 capacity 100 cost 100 items 424 782 load 89
+bin 429 type 1 capacity 120 cost 120 items 928 752 load 118
+bin 430 type 1 capacity 120 cost 120 items 895 857 load 103
+bin 431 type 2 capacity 150 cost 150 items 954 385 load 143
+bin 432 type 1 capacity 120 cost 120 items 503 459 156 load 114
+bin 433 type 0 capacity 100 cost 100 items 939 132 load 87
+bin 434 type 0 capacity 100 cost 100 items 799 206 load 99
+bin 435 type 1 capacity 120 cost 120 items 588 535 load 115
+bin 436 type 1 capacity 120 cost 120 items 922 794 load 104
+bin 437 type 1 capacity 120 cost 120 items 813 677 load 106
+bin 438 type 0 capacity 100 cost 100 items 933 603 load 96
+bin 439 type 0 capacity 100 cost 100 items 974 75 load 100
+bin 440 type 0 capacity 100 cost 100 items 251 645 854 load 99
+bin 441 type 0 capacity 100 cost 100 items 301 719 load 79
+bin 442 type 2 capacity 150 cost 150 items 290 999 983 load 122
+bin 443 type 0 capacity 100 cost 100 items 833 109 load 96

@@ -1,0 +1,56 @@
+instance_file ../instances/set_1/N_100/Correia_Random_1_2_5_10.txt
+config set1_3types_linear
+mode vanilla
+run 10
+seed 51
+start_time 2026-04-26 12:54:32
+iteration_limit 200
+destroy_percent 20
+status FEASIBLE
+runtime 0.082278
+objective 5320.000000
+total_bin_cost 5320
+total_excess 0
+total_conflicts 0
+
+solution
+bin 0 type 2 capacity 150 cost 150 items 6 37 load 148
+bin 1 type 2 capacity 150 cost 150 items 59 22 29 load 147
+bin 2 type 2 capacity 150 cost 150 items 64 18 12 load 150
+bin 3 type 1 capacity 120 cost 120 items 41 33 load 120
+bin 4 type 1 capacity 120 cost 120 items 52 2 load 120
+bin 5 type 1 capacity 120 cost 120 items 97 54 load 120
+bin 6 type 2 capacity 150 cost 150 items 17 89 96 load 150
+bin 7 type 2 capacity 150 cost 150 items 60 49 90 load 150
+bin 8 type 2 capacity 150 cost 150 items 3 51 7 load 149
+bin 9 type 2 capacity 150 cost 150 items 79 72 61 load 150
+bin 10 type 1 capacity 120 cost 120 items 26 76 load 120
+bin 11 type 2 capacity 150 cost 150 items 5 39 load 150
+bin 12 type 1 capacity 120 cost 120 items 88 30 38 load 120
+bin 13 type 2 capacity 150 cost 150 items 48 71 load 145
+bin 14 type 2 capacity 150 cost 150 items 55 74 42 load 150
+bin 15 type 1 capacity 120 cost 120 items 4 91 load 120
+bin 16 type 2 capacity 150 cost 150 items 13 47 94 load 150
+bin 17 type 1 capacity 120 cost 120 items 46 28 25 load 120
+bin 18 type 1 capacity 120 cost 120 items 82 21 load 119
+bin 19 type 1 capacity 120 cost 120 items 16 85 83 load 120
+bin 20 type 2 capacity 150 cost 150 items 57 87 95 load 150
+bin 21 type 2 capacity 150 cost 150 items 50 77 66 load 148
+bin 22 type 2 capacity 150 cost 150 items 84 20 load 150
+bin 23 type 2 capacity 150 cost 150 items 24 35 80 load 150
+bin 24 type 1 capacity 120 cost 120 items 86 65 load 120
+bin 25 type 1 capacity 120 cost 120 items 44 58 load 120
+bin 26 type 1 capacity 120 cost 120 items 69 43 10 load 120
+bin 27 type 2 capacity 150 cost 150 items 93 14 27 load 150
+bin 28 type 1 capacity 120 cost 120 items 63 0 load 120
+bin 29 type 1 capacity 120 cost 120 items 53 11 load 120
+bin 30 type 1 capacity 120 cost 120 items 45 98 19 load 119
+bin 31 type 1 capacity 120 cost 120 items 32 75 1 load 120
+bin 32 type 1 capacity 120 cost 120 items 68 73 load 120
+bin 33 type 1 capacity 120 cost 120 items 15 56 load 120
+bin 34 type 2 capacity 150 cost 150 items 34 9 36 load 150
+bin 35 type 1 capacity 120 cost 120 items 78 8 load 120
+bin 36 type 1 capacity 120 cost 120 items 62 40 load 117
+bin 37 type 1 capacity 120 cost 120 items 81 92 load 120
+bin 38 type 2 capacity 150 cost 150 items 67 70 31 load 150
+bin 39 type 0 capacity 100 cost 100 items 23 99 load 98

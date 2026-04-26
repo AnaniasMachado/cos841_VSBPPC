@@ -503,14 +503,12 @@ static void shrinkBins(Solution& sol) {
     for (int b = 0; b < sol.B; b++) {
         if (sol.itemsInBin[b].empty()) {
             sol.binType[b] = -1;
-            sol.binLevel[b] = -1;
             continue;
         }
 
         int type = smallestFeasibleType(sol.inst, sol.binLoad[b]);
 
         sol.binType[b] = type;
-        sol.binLevel[b] = type;
     }
 }
 
@@ -673,7 +671,7 @@ static int firstEmptyBinHC(const Solution& sol) {
 }
 
 static double hc1ExistingCost(const Solution& sol, int item, int bin) {
-    static constexpr double LAMBDA = 1e-3;
+    static constexpr double LAMBDA = 1e-1;
 
     if (sol.confCount[item][bin] != 0) {
         return std::numeric_limits<double>::infinity();

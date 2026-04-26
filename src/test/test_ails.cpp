@@ -8,6 +8,7 @@
 
 int main() {
     std::string filename = "../instances/set_1/N_1000_idx_2/Correia_Random_4_1_8_1.txt";
+    // std::string filename = "../instances/set_1/N_100/Correia_Random_1_1_1_1.txt";
 
     InstanceSet setType = InstanceSet::SET1;
     CostType costType = CostType::LINEAR;
@@ -25,7 +26,7 @@ int main() {
     int maxIterations = 1000;
     int maxNoImprove = 25;
 
-    AcceptanceType acceptance = AcceptanceType::ITERATIVE;
+    AcceptanceType acceptance = AcceptanceType::BEST;
     ImprovementType improvement = ImprovementType::BI;
 
     BuilderType builder = BuilderType::IBFD;
