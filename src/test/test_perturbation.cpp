@@ -8,36 +8,73 @@
 #include "../util/builder.hpp"
 #include "../util/perturbation.hpp"
 
+void printResult(const std::string& name,
+                 const Solution& sol,
+                 std::chrono::duration<double> elapsed) {
+    std::cout << "=== " << name << " ===\n";
+    std::cout << "Time: " << elapsed.count() << " s\n";
+    std::cout << "Objective: " << sol.computeObjective() << "\n";
+    std::cout << "Feasible: " << (sol.isFeasible() ? "YES" : "NO") << "\n\n";
+}
+
 void testRelocateK(const Solution& baseSol, int k, std::mt19937& rng) {
     Solution sol = baseSol;
 
     auto start = std::chrono::high_resolution_clock::now();
-
     Perturbation::relocateK(sol, k, rng);
-
     auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
 
-    std::cout << "=== relocateK ===\n";
-    std::cout << "Time: " << elapsed.count() << " s\n";
-    std::cout << "Objective: " << sol.computeObjective() << "\n";
-    std::cout << "Feasible: " << (sol.isFeasible() ? "YES" : "NO") << "\n\n";
+    printResult("relocateK(k = " + std::to_string(k) + ")", sol, end - start);
+}
+
+void testExchangeK(const Solution& baseSol, int k, std::mt19937& rng) {
+    Solution sol = baseSol;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    Perturbation::exchangeK(sol, k, rng);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    printResult("exchangeK(k = " + std::to_string(k) + ")", sol, end - start);
+}
+
+void testMerge(const Solution& baseSol, std::mt19937& rng) {
+    Solution sol = baseSol;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    Perturbation::merge(sol, rng);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    printResult("merge", sol, end - start);
+}
+
+void testMergeK(const Solution& baseSol, int k, std::mt19937& rng) {
+    Solution sol = baseSol;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    Perturbation::mergeK(sol, k, rng);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    printResult("mergeK(k = " + std::to_string(k) + ")", sol, end - start);
 }
 
 void testSplit(const Solution& baseSol, std::mt19937& rng) {
     Solution sol = baseSol;
 
     auto start = std::chrono::high_resolution_clock::now();
-
     Perturbation::split(sol, rng);
-
     auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
 
-    std::cout << "=== split ===\n";
-    std::cout << "Time: " << elapsed.count() << " s\n";
-    std::cout << "Objective: " << sol.computeObjective() << "\n";
-    std::cout << "Feasible: " << (sol.isFeasible() ? "YES" : "NO") << "\n\n";
+    printResult("split", sol, end - start);
+}
+
+void testSplitK(const Solution& baseSol, int k, std::mt19937& rng) {
+    Solution sol = baseSol;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    Perturbation::splitK(sol, k, rng);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    printResult("splitK(k = " + std::to_string(k) + ")", sol, end - start);
 }
 
 int main() {
@@ -63,8 +100,14 @@ int main() {
     std::cout << "Objective: " << baseSol.computeObjective() << "\n";
     std::cout << "Feasible: " << (baseSol.isFeasible() ? "YES" : "NO") << "\n\n";
 
-    testRelocateK(baseSol, 5, rng);
+    int k = 5;
+
+    testRelocateK(baseSol, k, rng);
+    testExchangeK(baseSol, k, rng);
+    testMerge(baseSol, rng);
+    testMergeK(baseSol, k, rng);
     testSplit(baseSol, rng);
+    testSplitK(baseSol, k, rng);
 
     return 0;
 }

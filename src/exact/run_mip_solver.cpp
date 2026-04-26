@@ -1,4 +1,4 @@
-#include "../exact/mip_solver.hpp"
+#include "mip_solver.hpp"
 
 #include <iostream>
 #include <vector>

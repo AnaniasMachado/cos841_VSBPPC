@@ -17,7 +17,10 @@ EXACT_DIR = exact
 
 UTIL_SOURCES = $(wildcard $(UTIL_DIR)/*.cpp)
 META_SOURCES = $(wildcard $(META_DIR)/*.cpp)
-EXACT_SOURCES = $(wildcard $(EXACT_DIR)/*.cpp)
+
+EXACT_MAIN = $(EXACT_DIR)/run_mip_solver.cpp
+EXACT_SOURCES = $(filter-out $(EXACT_MAIN),$(wildcard $(EXACT_DIR)/*.cpp))
+
 TEST_SOURCES = $(wildcard $(TEST_DIR)/*.cpp)
 
 UTIL_OBJECTS = $(patsubst $(UTIL_DIR)/%.cpp,$(BIN_DIR)/%.o,$(UTIL_SOURCES))
@@ -25,7 +28,12 @@ META_OBJECTS = $(patsubst $(META_DIR)/%.cpp,$(BIN_DIR)/meta_%.o,$(META_SOURCES))
 EXACT_OBJECTS = $(patsubst $(EXACT_DIR)/%.cpp,$(BIN_DIR)/exact_%.o,$(EXACT_SOURCES))
 TEST_OBJECTS = $(patsubst $(TEST_DIR)/%.cpp,$(BIN_DIR)/%.test.o,$(TEST_SOURCES))
 
-TARGETS = $(patsubst $(TEST_DIR)/%.cpp,$(BIN_DIR)/%,$(TEST_SOURCES))
+EXACT_MAIN_OBJECT = $(BIN_DIR)/exact_run_mip_solver.o
+
+TEST_TARGETS = $(patsubst $(TEST_DIR)/%.cpp,$(BIN_DIR)/%,$(TEST_SOURCES))
+RUN_MIP_TARGET = $(BIN_DIR)/run_mip_solver
+
+TARGETS = $(TEST_TARGETS) $(RUN_MIP_TARGET)
 
 all: $(TARGETS)
 
@@ -50,6 +58,9 @@ $(BIN_DIR)/%.test.o: $(TEST_DIR)/%.cpp | $(BIN_DIR)
 
 # ---- link ----
 $(BIN_DIR)/%: $(BIN_DIR)/%.test.o $(UTIL_OBJECTS) $(META_OBJECTS) $(EXACT_OBJECTS) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(GUROBI_LIB) -Wl,-rpath,$(GUROBI_HOME)/lib
+
+$(RUN_MIP_TARGET): $(EXACT_MAIN_OBJECT) $(UTIL_OBJECTS) $(META_OBJECTS) $(EXACT_OBJECTS) | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(GUROBI_LIB) -Wl,-rpath,$(GUROBI_HOME)/lib
 
 clean:

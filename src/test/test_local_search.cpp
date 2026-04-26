@@ -25,6 +25,16 @@ void testNeighborhood(const std::string& name,
         improved = ls.exchange();
     } else if (name == "exchange21") {
         improved = ls.exchange21();
+    } else if (name == "classic") {
+        improved = ls.classic();
+    } else if (name == "ejectionGlobal") {
+        improved = ls.ejectionGlobal();
+    } else if (name == "assignment") {
+        improved = ls.assignment((int)baseSol.N / 20);
+    } else if (name == "ejectionChain") {
+        improved = ls.ejectionChain();
+    } else if (name == "grenade") {
+        improved = ls.grenade();
     }
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -71,6 +81,11 @@ int main() {
     testNeighborhood("relocate", pertSol, ImprovementType::BI, rng);
     testNeighborhood("exchange", pertSol, ImprovementType::BI, rng);
     testNeighborhood("exchange21", pertSol, ImprovementType::BI, rng);
+    testNeighborhood("classic", pertSol, ImprovementType::BI, rng);
+    testNeighborhood("ejectionGlobal", pertSol, ImprovementType::BI, rng);
+    testNeighborhood("assignment", pertSol, ImprovementType::BI, rng);
+    testNeighborhood("ejectionChain", pertSol, ImprovementType::BI, rng);
+    testNeighborhood("grenade", pertSol, ImprovementType::BI, rng);
 
     return 0;
 }
