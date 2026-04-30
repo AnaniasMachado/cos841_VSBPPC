@@ -1,0 +1,117 @@
+instance_file ../instances/set_1/N_200/Correia_Random_2_1_10_7.txt
+config set1_5types_linear
+mode vanilla
+run 2
+seed 43
+start_time 2026-04-29 19:36:39
+iteration_limit 200
+destroy_percent 20
+status FEASIBLE
+runtime 0.184420
+objective 10530.000000
+total_bin_cost 10530
+total_excess 0
+total_conflicts 0
+
+solution
+bin 0 type 0 capacity 60 cost 60 items 157 load 60
+bin 1 type 2 capacity 100 cost 100 items 24 load 99
+bin 2 type 4 capacity 150 cost 150 items 78 158 load 150
+bin 3 type 4 capacity 150 cost 150 items 70 94 load 150
+bin 4 type 1 capacity 80 cost 80 items 187 150 load 77
+bin 5 type 1 capacity 80 cost 80 items 164 58 load 74
+bin 6 type 1 capacity 80 cost 80 items 109 83 load 77
+bin 7 type 2 capacity 100 cost 100 items 67 35 load 89
+bin 8 type 0 capacity 60 cost 60 items 181 load 54
+bin 9 type 3 capacity 120 cost 120 items 81 30 load 116
+bin 10 type 1 capacity 80 cost 80 items 51 load 80
+bin 11 type 0 capacity 60 cost 60 items 85 114 load 55
+bin 12 type 1 capacity 80 cost 80 items 120 118 load 78
+bin 13 type 3 capacity 120 cost 120 items 172 55 load 120
+bin 14 type 0 capacity 60 cost 60 items 20 60 load 55
+bin 15 type 3 capacity 120 cost 120 items 198 71 load 120
+bin 16 type 2 capacity 100 cost 100 items 170 97 load 96
+bin 17 type 0 capacity 60 cost 60 items 175 111 load 47
+bin 18 type 3 capacity 120 cost 120 items 38 88 load 111
+bin 19 type 0 capacity 60 cost 60 items 168 96 load 53
+bin 20 type 2 capacity 100 cost 100 items 21 41 load 100
+bin 21 type 2 capacity 100 cost 100 items 186 100 196 load 98
+bin 22 type 4 capacity 150 cost 150 items 192 95 load 150
+bin 23 type 4 capacity 150 cost 150 items 68 128 load 136
+bin 24 type 4 capacity 150 cost 150 items 89 61 load 134
+bin 25 type 3 capacity 120 cost 120 items 2 27 load 114
+bin 26 type 0 capacity 60 cost 60 items 98 166 load 55
+bin 27 type 2 capacity 100 cost 100 items 159 169 load 98
+bin 28 type 1 capacity 80 cost 80 items 149 112 load 73
+bin 29 type 2 capacity 100 cost 100 items 141 195 load 82
+bin 30 type 3 capacity 120 cost 120 items 153 17 load 104
+bin 31 type 1 capacity 80 cost 80 items 178 56 load 80
+bin 32 type 3 capacity 120 cost 120 items 127 163 load 120
+bin 33 type 4 capacity 150 cost 150 items 91 146 load 148
+bin 34 type 0 capacity 60 cost 60 items 40 load 56
+bin 35 type 3 capacity 120 cost 120 items 176 123 load 118
+bin 36 type 4 capacity 150 cost 150 items 143 11 load 149
+bin 37 type 2 capacity 100 cost 100 items 6 171 load 99
+bin 38 type 3 capacity 120 cost 120 items 138 134 load 117
+bin 39 type 1 capacity 80 cost 80 items 44 18 load 78
+bin 40 type 3 capacity 120 cost 120 items 185 50 191 load 118
+bin 41 type 3 capacity 120 cost 120 items 105 45 load 114
+bin 42 type 4 capacity 150 cost 150 items 184 161 92 load 149
+bin 43 type 4 capacity 150 cost 150 items 64 57 load 148
+bin 44 type 3 capacity 120 cost 120 items 76 148 load 118
+bin 45 type 2 capacity 100 cost 100 items 23 load 92
+bin 46 type 2 capacity 100 cost 100 items 77 116 load 98
+bin 47 type 0 capacity 60 cost 60 items 66 167 load 55
+bin 48 type 1 capacity 80 cost 80 items 73 152 load 74
+bin 49 type 1 capacity 80 cost 80 items 107 31 load 70
+bin 50 type 1 capacity 80 cost 80 items 103 49 load 78
+bin 51 type 3 capacity 120 cost 120 items 10 90 load 114
+bin 52 type 1 capacity 80 cost 80 items 125 87 load 79
+bin 53 type 3 capacity 120 cost 120 items 130 22 load 115
+bin 54 type 4 capacity 150 cost 150 items 48 7 load 149
+bin 55 type 4 capacity 150 cost 150 items 69 9 load 143
+bin 56 type 1 capacity 80 cost 80 items 16 29 load 78
+bin 57 type 1 capacity 80 cost 80 items 39 13 load 78
+bin 58 type 3 capacity 120 cost 120 items 106 65 load 113
+bin 59 type 3 capacity 120 cost 120 items 162 62 load 118
+bin 60 type 2 capacity 100 cost 100 items 179 42 load 97
+bin 61 type 3 capacity 120 cost 120 items 147 54 load 113
+bin 62 type 2 capacity 100 cost 100 items 194 14 load 95
+bin 63 type 0 capacity 60 cost 60 items 104 8 load 60
+bin 64 type 3 capacity 120 cost 120 items 135 12 load 113
+bin 65 type 3 capacity 120 cost 120 items 140 124 load 119
+bin 66 type 4 capacity 150 cost 150 items 183 189 load 141
+bin 67 type 1 capacity 80 cost 80 items 139 136 load 78
+bin 68 type 2 capacity 100 cost 100 items 113 load 96
+bin 69 type 4 capacity 150 cost 150 items 129 15 load 147
+bin 70 type 2 capacity 100 cost 100 items 119 160 load 95
+bin 71 type 4 capacity 150 cost 150 items 115 155 load 146
+bin 72 type 2 capacity 100 cost 100 items 1 72 load 94
+bin 73 type 3 capacity 120 cost 120 items 79 28 load 119
+bin 74 type 3 capacity 120 cost 120 items 102 197 load 115
+bin 75 type 2 capacity 100 cost 100 items 82 0 load 92
+bin 76 type 3 capacity 120 cost 120 items 132 154 load 120
+bin 77 type 2 capacity 100 cost 100 items 47 33 load 90
+bin 78 type 0 capacity 60 cost 60 items 99 190 load 58
+bin 79 type 2 capacity 100 cost 100 items 156 110 137 load 83
+bin 80 type 4 capacity 150 cost 150 items 32 19 load 150
+bin 81 type 2 capacity 100 cost 100 items 108 86 load 99
+bin 82 type 3 capacity 120 cost 120 items 193 59 load 109
+bin 83 type 4 capacity 150 cost 150 items 174 36 4 load 147
+bin 84 type 2 capacity 100 cost 100 items 145 25 load 95
+bin 85 type 2 capacity 100 cost 100 items 74 load 87
+bin 86 type 3 capacity 120 cost 120 items 53 37 load 118
+bin 87 type 3 capacity 120 cost 120 items 26 142 63 load 120
+bin 88 type 2 capacity 100 cost 100 items 93 52 load 100
+bin 89 type 2 capacity 100 cost 100 items 133 199 load 100
+bin 90 type 2 capacity 100 cost 100 items 101 131 load 100
+bin 91 type 1 capacity 80 cost 80 items 43 144 load 76
+bin 92 type 2 capacity 100 cost 100 items 188 126 load 93
+bin 93 type 2 capacity 100 cost 100 items 117 121 load 88
+bin 94 type 1 capacity 80 cost 80 items 182 75 load 79
+bin 95 type 0 capacity 60 cost 60 items 46 load 41
+bin 96 type 4 capacity 150 cost 150 items 3 122 34 load 146
+bin 97 type 0 capacity 60 cost 60 items 165 180 load 44
+bin 98 type 0 capacity 60 cost 60 items 177 80 load 58
+bin 99 type 1 capacity 80 cost 80 items 84 173 load 78
+bin 100 type 2 capacity 100 cost 100 items 5 151 load 82
