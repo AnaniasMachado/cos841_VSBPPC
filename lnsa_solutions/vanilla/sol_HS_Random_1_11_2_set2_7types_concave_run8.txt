@@ -1,0 +1,104 @@
+instance_file ../instances/set_2/N_100/HS_Random_1_11_2.txt
+config set2_7types_concave
+mode vanilla
+run 8
+seed 49
+start_time 2026-04-30 08:44:01
+iteration_limit 200
+destroy_percent 20
+status FEASIBLE
+runtime 0.052079
+objective 11217.000000
+total_bin_cost 11217
+total_excess 0
+total_conflicts 0
+
+solution
+bin 0 type 6 capacity 250 cost 159 items 94 load 248
+bin 1 type 6 capacity 250 cost 159 items 18 load 246
+bin 2 type 6 capacity 250 cost 159 items 38 load 246
+bin 3 type 6 capacity 250 cost 159 items 73 load 246
+bin 4 type 6 capacity 250 cost 159 items 93 load 241
+bin 5 type 6 capacity 250 cost 159 items 99 load 237
+bin 6 type 6 capacity 250 cost 159 items 0 load 236
+bin 7 type 6 capacity 250 cost 159 items 13 load 236
+bin 8 type 6 capacity 250 cost 159 items 34 load 236
+bin 9 type 6 capacity 250 cost 159 items 16 load 235
+bin 10 type 5 capacity 220 cost 149 items 68 load 220
+bin 11 type 6 capacity 250 cost 159 items 12 load 233
+bin 12 type 5 capacity 220 cost 149 items 72 load 217
+bin 13 type 6 capacity 250 cost 159 items 87 load 230
+bin 14 type 6 capacity 250 cost 159 items 10 63 load 247
+bin 15 type 5 capacity 220 cost 149 items 24 load 213
+bin 16 type 5 capacity 220 cost 149 items 14 load 212
+bin 17 type 6 capacity 250 cost 159 items 60 load 226
+bin 18 type 6 capacity 250 cost 159 items 77 load 225
+bin 19 type 5 capacity 220 cost 149 items 3 load 210
+bin 20 type 5 capacity 220 cost 149 items 53 load 210
+bin 21 type 5 capacity 220 cost 149 items 33 load 209
+bin 22 type 5 capacity 220 cost 149 items 40 load 209
+bin 23 type 5 capacity 220 cost 149 items 36 load 205
+bin 24 type 4 capacity 190 cost 138 items 4 load 189
+bin 25 type 4 capacity 190 cost 138 items 57 load 187
+bin 26 type 5 capacity 220 cost 149 items 61 load 201
+bin 27 type 5 capacity 220 cost 149 items 62 load 201
+bin 28 type 4 capacity 190 cost 138 items 54 load 185
+bin 29 type 5 capacity 220 cost 149 items 64 load 198
+bin 30 type 4 capacity 190 cost 138 items 52 load 181
+bin 31 type 5 capacity 220 cost 149 items 48 load 194
+bin 32 type 4 capacity 190 cost 138 items 66 load 177
+bin 33 type 6 capacity 250 cost 159 items 30 15 load 238
+bin 34 type 3 capacity 160 cost 127 items 32 load 160
+bin 35 type 3 capacity 160 cost 127 items 39 load 160
+bin 36 type 3 capacity 160 cost 127 items 49 load 159
+bin 37 type 4 capacity 190 cost 138 items 69 load 172
+bin 38 type 3 capacity 160 cost 127 items 19 load 158
+bin 39 type 3 capacity 160 cost 127 items 91 load 158
+bin 40 type 6 capacity 250 cost 159 items 89 75 load 233
+bin 41 type 3 capacity 160 cost 127 items 88 load 155
+bin 42 type 4 capacity 190 cost 138 items 92 load 168
+bin 43 type 4 capacity 190 cost 138 items 47 load 166
+bin 44 type 5 capacity 220 cost 149 items 56 9 load 199
+bin 45 type 3 capacity 160 cost 127 items 81 load 152
+bin 46 type 3 capacity 160 cost 127 items 6 load 149
+bin 47 type 3 capacity 160 cost 127 items 82 load 147
+bin 48 type 3 capacity 160 cost 127 items 76 83 load 157
+bin 49 type 2 capacity 130 cost 115 items 43 load 127
+bin 50 type 5 capacity 220 cost 149 items 55 95 load 200
+bin 51 type 4 capacity 190 cost 138 items 58 86 load 179
+bin 52 type 3 capacity 160 cost 127 items 21 load 137
+bin 53 type 3 capacity 160 cost 127 items 44 load 137
+bin 54 type 3 capacity 160 cost 127 items 78 45 load 155
+bin 55 type 3 capacity 160 cost 127 items 85 load 136
+bin 56 type 3 capacity 160 cost 127 items 26 load 134
+bin 57 type 3 capacity 160 cost 127 items 65 load 133
+bin 58 type 3 capacity 160 cost 127 items 96 load 131
+bin 59 type 2 capacity 130 cost 115 items 80 load 117
+bin 60 type 2 capacity 130 cost 115 items 74 load 116
+bin 61 type 1 capacity 100 cost 100 items 37 load 100
+bin 62 type 2 capacity 130 cost 115 items 28 load 110
+bin 63 type 1 capacity 100 cost 100 items 31 load 95
+bin 64 type 1 capacity 100 cost 100 items 42 load 89
+bin 65 type 3 capacity 160 cost 127 items 71 11 load 135
+bin 66 type 1 capacity 100 cost 100 items 51 load 84
+bin 67 type 1 capacity 100 cost 100 items 50 load 83
+bin 68 type 1 capacity 100 cost 100 items 59 load 79
+bin 69 type 1 capacity 100 cost 100 items 70 load 78
+bin 70 type 2 capacity 130 cost 115 items 2 27 load 108
+bin 71 type 1 capacity 100 cost 100 items 46 load 73
+bin 72 type 1 capacity 100 cost 100 items 67 load 71
+bin 73 type 1 capacity 100 cost 100 items 22 25 load 94
+bin 74 type 0 capacity 70 cost 84 items 8 load 51
+bin 75 type 0 capacity 70 cost 84 items 79 load 49
+bin 76 type 0 capacity 70 cost 84 items 90 load 49
+bin 77 type 0 capacity 70 cost 84 items 29 load 39
+bin 78 type 0 capacity 70 cost 84 items 20 load 34
+bin 79 type 0 capacity 70 cost 84 items 5 load 32
+bin 80 type 0 capacity 70 cost 84 items 7 23 load 49
+bin 81 type 0 capacity 70 cost 84 items 35 load 30
+bin 82 type 0 capacity 70 cost 84 items 1 load 26
+bin 83 type 0 capacity 70 cost 84 items 98 load 24
+bin 84 type 0 capacity 70 cost 84 items 97 load 23
+bin 85 type 0 capacity 70 cost 84 items 41 load 20
+bin 86 type 0 capacity 70 cost 84 items 17 load 14
+bin 87 type 0 capacity 70 cost 84 items 84 load 13

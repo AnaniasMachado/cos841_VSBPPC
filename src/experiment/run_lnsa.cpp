@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <ctime>
 #include <sstream>
+#include <cstdio>
 
 namespace fs = std::filesystem;
 
@@ -59,14 +60,69 @@ static std::vector<std::string> collectInstanceFiles(const std::string& rootDir)
     return files;
 }
 
-static bool isSet1Instance(const std::string& file) {
-    return file.find("set_1") != std::string::npos ||
-           file.find("Correia_Random") != std::string::npos;
+static bool containsInt(const std::vector<int>& values, int x) {
+    return std::find(values.begin(), values.end(), x) != values.end();
 }
 
-static bool isSet2Instance(const std::string& file) {
-    return file.find("set_2") != std::string::npos ||
-           file.find("HS_Random") != std::string::npos;
+static bool parseSet1Name(const std::string& filename,
+                          int& x,
+                          int& y,
+                          int& z,
+                          int& t) {
+    return std::sscanf(
+        filename.c_str(),
+        "Correia_Random_%d_%d_%d_%d.txt",
+        &x, &y, &z, &t
+    ) == 4;
+}
+
+static bool parseSet2Name(const std::string& filename,
+                          int& x,
+                          int& y,
+                          int& z) {
+    return std::sscanf(
+        filename.c_str(),
+        "HS_Random_%d_%d_%d.txt",
+        &x, &y, &z
+    ) == 3;
+}
+
+static bool selectedSet1Instance(const std::string& file,
+                                 const std::vector<int>& set1XValues,
+                                 const std::vector<int>& set1YValues,
+                                 const std::vector<int>& set1ZValues) {
+    fs::path path(file);
+
+    if (path.string().find("set_1") == std::string::npos) {
+        return false;
+    }
+
+    int x, y, z, t;
+    if (!parseSet1Name(path.filename().string(), x, y, z, t)) {
+        return false;
+    }
+
+    return containsInt(set1XValues, x) &&
+           containsInt(set1YValues, y) &&
+           containsInt(set1ZValues, z);
+}
+
+static bool selectedSet2Instance(const std::string& file,
+                                 const std::vector<int>& set2XValues,
+                                 const std::vector<int>& set2YValues) {
+    fs::path path(file);
+
+    if (path.string().find("set_2") == std::string::npos) {
+        return false;
+    }
+
+    int x, y, z;
+    if (!parseSet2Name(path.filename().string(), x, y, z)) {
+        return false;
+    }
+
+    return containsInt(set2XValues, x) &&
+           containsInt(set2YValues, y);
 }
 
 static std::string solutionFilename(const std::string& solutionsDir,
@@ -221,20 +277,36 @@ int main() {
     // Parameters to edit
     // =========================
     const std::string instancesRoot = "../instances";
-    const std::string solutionsDir = "../lnsa_solutions/vanilla";
+    const std::string solutionsDir = "../lnsa_solutions/sfc_subset";
 
-    const int iterationLimit = 200;
-    const int destroyPercent = 20;
+    const int iterationLimit = 150;
+    const int destroyPercent = 25;
     const int runsPerInstance = 10;
     const unsigned int firstSeed = 42;
 
     const int kw = 1000;
     const int kc = 1000;
 
+    // Set-1 filenames: Correia_Random_x_y_z_t.txt
+    // x: number of items       1 -> 100, 2 -> 200, 3 -> 500, 4 -> 1000
+    // y: item-size interval    1 -> [1,100], 2 -> [20,100], 3 -> [50,100]
+    // z: conflict density      10 -> 0.95, 11 -> 0.99
+    // t: instance id           all t values are included automatically.
+    const std::vector<int> set1XValues = {4};
+    const std::vector<int> set1YValues = {3};
+    const std::vector<int> set1ZValues = {9, 10, 11};
+
+    // Set-2 filenames: HS_Random_x_y_z.txt
+    // x: number of items       1 -> 100, 2 -> 200, 3 -> 500, 4 -> 1000
+    // y: conflict density      10 -> 0.95, 11 -> 0.99
+    // z: instance id           all z values are included automatically.
+    const std::vector<int> set2XValues = {4};
+    const std::vector<int> set2YValues = {9, 10, 11};
+
     LNSAParams params;
     params.iterationLimit = iterationLimit;
     params.destroyPercent = destroyPercent;
-    params.mode = LNSAMode::VANILLA;
+    params.mode = LNSAMode::SFC;
 
     try {
         std::vector<std::string> instanceFiles =
@@ -245,8 +317,17 @@ int main() {
 
         std::cout << "Saving solutions to: " << solutionsDir << "\n";
 
+        int selectedCount = 0;
+
         for (const std::string& instanceFile : instanceFiles) {
-            if (isSet1Instance(instanceFile)) {
+            if (selectedSet1Instance(
+                    instanceFile,
+                    set1XValues,
+                    set1YValues,
+                    set1ZValues
+                )) {
+                ++selectedCount;
+
                 runOneConfiguration(
                     instanceFile,
                     "set1_3types_linear",
@@ -275,7 +356,13 @@ int main() {
                     solutionsDir
                 );
 
-            } else if (isSet2Instance(instanceFile)) {
+            } else if (selectedSet2Instance(
+                           instanceFile,
+                           set2XValues,
+                           set2YValues
+                       )) {
+                ++selectedCount;
+
                 runOneConfiguration(
                     instanceFile,
                     "set2_7types_convex",
@@ -317,14 +404,12 @@ int main() {
                     firstSeed,
                     solutionsDir
                 );
-
-            } else {
-                std::cerr << "Warning: could not infer set for file: "
-                          << instanceFile << "\n";
             }
         }
 
-        std::cout << "\nAll results saved in: " << solutionsDir << "\n";
+        std::cout << "\nSelected instance files: " << selectedCount << "\n";
+        std::cout << "All results saved in: " << solutionsDir << "\n";
+
         return 0;
 
     } catch (const std::exception& e) {
