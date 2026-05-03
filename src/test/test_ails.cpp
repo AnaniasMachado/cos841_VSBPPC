@@ -7,12 +7,17 @@
 #include "../metaheuristic/ails.hpp"
 
 int main() {
-    std::string filename = "../instances/set_1/N_1000_idx_2/Correia_Random_4_1_8_1.txt";
-    // std::string filename = "../instances/set_1/N_100/Correia_Random_1_1_1_1.txt";
+    // std::string filename = "../instances/set_1/N_1000/Correia_Random_4_3_11_1.txt";
 
-    InstanceSet setType = InstanceSet::SET1;
-    CostType costType = CostType::LINEAR;
-    BinSizeSetting binSizeSetting = BinSizeSetting::THREE_TYPES;
+    // InstanceSet setType = InstanceSet::SET1;
+    // CostType costType = CostType::LINEAR;
+    // BinSizeSetting binSizeSetting = BinSizeSetting::THREE_TYPES;
+
+    std::string filename = "../instances/set_2/N_1000/HS_Random_4_11_1.txt";
+
+    InstanceSet setType = InstanceSet::SET2;
+    CostType costType = CostType::CONVEX;
+    BinSizeSetting binSizeSetting = BinSizeSetting::SEVEN_TYPES;
 
     int kw = 400;
     int kc = 275;
@@ -30,15 +35,16 @@ int main() {
     ImprovementType improvement = ImprovementType::BI;
 
     BuilderType builder = BuilderType::IBFD;
-    double builderAlpha = 0.5;
 
-    bool useUCB = true;
+    bool useUCB = false;
     double c = 0.5718;
 
-    bool useQRVND = true;
+    bool useQRVND = false;
     double alpha = 0.1495;
     double gamma = 0.7455;
     double epsilon = 0.0377;
+
+    bool exactCover = false;
 
     bool verbose = true;
     double timeLimit = 600.0;
@@ -57,11 +63,11 @@ int main() {
               useUCB,
               c,
               builder,
-              builderAlpha,
               useQRVND,
               alpha,
               gamma,
               epsilon,
+              exactCover,
               verbose,
               timeLimit);
 

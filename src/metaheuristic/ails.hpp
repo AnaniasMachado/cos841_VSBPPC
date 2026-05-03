@@ -55,7 +55,6 @@ private:
     ImprovementType improvement_type;
 
     BuilderType builder_type;
-    double builder_alpha;
 
     bool useUCB;
     double c;
@@ -64,6 +63,8 @@ private:
     double alpha;
     double gamma;
     double epsilon;
+
+    bool exactCover;
 
     bool verbose;
     double time_limit;
@@ -105,11 +106,11 @@ public:
         bool use_ucb = false,
         double c = 1.0,
         BuilderType builder_type = BuilderType::ALI_EKICI,
-        double builder_alpha = 0.5,
         bool use_qrvnd = false,
         double alpha = 0.1,
         double gamma = 0.9,
         double epsilon = 0.1,
+        bool exactCover = false,
         bool verbose = false,
         double time_limit = 3600.0);
 

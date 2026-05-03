@@ -7,6 +7,12 @@ LocalSearch::LocalSearch(Solution& sol,
     : solution(&sol),
       improvementType(improvementType_),
       rng(rng_) {
+    int usedBins = 0;
+    for (const auto& bin : sol.itemsInBin) {
+        if (!bin.empty()) ++usedBins;
+    }
+
+    scPoolLimit = usedBins * 5;
 }
 
 // ---- Apply swap subsets ----
@@ -696,7 +702,7 @@ bool LocalSearch::assignment(int N_ASSIGN) {
     int objBefore = solution->computeObjective();
     int objAfter = candidate.computeObjective();
 
-    if (objAfter <= objBefore) {
+    if (objAfter < objBefore) {
         *solution = candidate;
         return true;
     }
@@ -1195,6 +1201,697 @@ bool LocalSearch::grenade() {
     }
 
     return false;
+}
+
+// -----------------------------------------------------
+// Hash one bin by item set.
+// For current VSBPPC design, this is enough because bin
+// type is determined by load.
+// -----------------------------------------------------
+std::size_t LocalSearch::hashBin(const std::vector<int>& bin) const {
+    static constexpr uint64_t FNV = 1469598103934665603ULL;
+    static constexpr uint64_t PRIME = 1099511628211ULL;
+
+    std::vector<int> tmp = bin;
+    std::sort(tmp.begin(), tmp.end());
+
+    std::size_t h = FNV;
+
+    for (int x : tmp) {
+        h ^= static_cast<uint64_t>(x) + 0x9e3779b97f4a7c15ULL;
+        h *= PRIME;
+    }
+
+    h ^= (h >> 33);
+    h *= 0xff51afd7ed558ccdULL;
+    h ^= (h >> 33);
+    h *= 0xc4ceb9fe1a85ec53ULL;
+    h ^= (h >> 33);
+
+    return h;
+}
+
+std::size_t LocalSearch::hashSolution(
+    const std::vector<std::vector<int>>& bins) const {
+    static constexpr uint64_t FNV = 1469598103934665603ULL;
+    static constexpr uint64_t PRIME = 1099511628211ULL;
+
+    std::vector<std::size_t> binHashes;
+    binHashes.reserve(bins.size());
+
+    for (const auto& bin : bins) {
+        if (!bin.empty()) {
+            binHashes.push_back(hashBin(bin));
+        }
+    }
+
+    std::sort(binHashes.begin(), binHashes.end());
+
+    std::size_t h = FNV;
+
+    for (std::size_t hb : binHashes) {
+        h ^= hb;
+        h *= PRIME;
+    }
+
+    h ^= (h >> 33);
+    h *= 0xff51afd7ed558ccdULL;
+    h ^= (h >> 33);
+    h *= 0xc4ceb9fe1a85ec53ULL;
+    h ^= (h >> 33);
+
+    return h;
+}
+
+int LocalSearch::smallestFeasibleTypeSC(const VSBPPCInstance& inst,
+                                        int load) const {
+    if (load <= 0) return -1;
+
+    for (int k = 0; k < static_cast<int>(inst.binTypes.size()); ++k) {
+        if (load <= inst.binTypes[k].capacity) {
+            return k;
+        }
+    }
+
+    return -1;
+}
+
+int LocalSearch::binCostSC(const VSBPPCInstance& inst, int type) const {
+    return type < 0 ? 0 : inst.binTypes[type].cost;
+}
+
+// -----------------------------------------------------
+// Check whether a column is a feasible VSBPPC bin.
+// A column is feasible iff:
+//   1. total load fits at least one bin type;
+//   2. no pair of items conflicts.
+// -----------------------------------------------------
+bool LocalSearch::isFeasibleColumn(const std::vector<int>& items,
+                                   int& load,
+                                   int& type,
+                                   int& cost) const {
+    const auto& inst = solution->inst;
+
+    load = 0;
+
+    for (int item : items) {
+        load += inst.weights[item];
+    }
+
+    type = smallestFeasibleTypeSC(inst, load);
+
+    if (type == -1) {
+        return false;
+    }
+
+    for (std::size_t a = 0; a < items.size(); ++a) {
+        int i = items[a];
+
+        for (std::size_t b = a + 1; b < items.size(); ++b) {
+            int j = items[b];
+
+            int word = j >> 6;
+            int bit = j & 63;
+
+            if (inst.conflicts[i][word] & (1ULL << bit)) {
+                return false;
+            }
+        }
+    }
+
+    cost = binCostSC(inst, type);
+    return true;
+}
+
+// -----------------------------------------------------
+// Keep only feasible columns.
+// Exact duplicate columns are ignored.
+// -----------------------------------------------------
+void LocalSearch::addSetCoveringColumn(SCColumn&& col) {
+    const int n_items = solution->N;
+
+    int load = 0;
+    int type = -1;
+    int cost = 0;
+
+    if (!isFeasibleColumn(col.items, load, type, cost)) {
+        return;
+    }
+
+    col.load = load;
+    col.type = type;
+    col.cost = cost;
+    col.buildMask(n_items);
+
+    std::size_t h = hashBin(col.items);
+
+    if (scSeen.count(h)) {
+        return;
+    }
+
+    SCPoolEntry entry;
+    entry.col = std::move(col);
+    entry.hash = h;
+
+    scPool.push_back(std::move(entry));
+    scSeen.insert(h);
+
+    trimSetCoveringPool();
+}
+
+void LocalSearch::trimSetCoveringPool() {
+    if (static_cast<int>(scPool.size()) <= scPoolLimit) {
+        return;
+    }
+
+    auto it = scPool.begin();
+
+    while (static_cast<int>(scPool.size()) > scPoolLimit &&
+           it != scPool.end()) {
+        if (!eliteHashes.count(it->hash)) {
+            scSeen.erase(it->hash);
+            it = scPool.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
+std::vector<std::vector<int>> LocalSearch::extractBins(
+    const Solution& sol) const {
+    std::vector<std::vector<int>> bins;
+
+    for (int b = 0; b < sol.B; ++b) {
+        if (!sol.itemsInBin[b].empty()) {
+            bins.push_back(sol.itemsInBin[b]);
+        }
+    }
+
+    return bins;
+}
+
+// -----------------------------------------------------
+// Rebuild a normal Solution from selected columns.
+// Since the model uses exact-cover constraints, every item
+// should appear exactly once.
+// -----------------------------------------------------
+Solution LocalSearch::buildSolutionFromBins(
+    const std::vector<std::vector<int>>& bins) const {
+    Solution candidate(solution->inst, solution->kw, solution->kc);
+
+    int b = 0;
+
+    for (const auto& bin : bins) {
+        if (bin.empty()) continue;
+
+        for (int item : bin) {
+            candidate.addItem(item, b);
+        }
+
+        ++b;
+    }
+
+    return candidate;
+}
+
+// -----------------------------------------------------
+// Initialize SC with the elite solution.
+// The elite solution should be the best feasible solution
+// found so far.
+// -----------------------------------------------------
+void LocalSearch::initializeSetCoveringFromElite(const Solution& elite) {
+    if (!elite.isFeasible()) {
+        return;
+    }
+
+    eliteBins = extractBins(elite);
+    eliteHashes.clear();
+
+    for (const auto& bin : eliteBins) {
+        eliteHashes.insert(hashBin(bin));
+    }
+
+    eliteSolutionHash = hashSolution(eliteBins);
+    eliteObjective = elite.computeObjective();
+
+    for (const auto& bin : eliteBins) {
+        SCColumn col;
+        col.items = bin;
+        addSetCoveringColumn(std::move(col));
+    }
+}
+
+// -----------------------------------------------------
+// Add all feasible bins from a solution to the pool.
+// Call this after local search / perturbation generates
+// a solution worth mining for columns.
+// -----------------------------------------------------
+void LocalSearch::addToSetCoveringPool(const Solution& sol) {
+    for (int b = 0; b < sol.B; ++b) {
+        if (sol.itemsInBin[b].empty()) continue;
+
+        SCColumn col;
+        col.items = sol.itemsInBin[b];
+
+        addSetCoveringColumn(std::move(col));
+    }
+}
+
+// -----------------------------------------------------
+// Set covering / set partitioning neighborhood for VSBPPC.
+//
+// Model:
+//   min sum c_j x_j
+//   s.t. each item covered at least once    if exactCover == false
+//        each item covered exactly once     if exactCover == true
+//        x_j binary
+//
+// In exact-cover mode, the selected columns already form a
+// valid partition of the items and can be converted directly
+// into a Solution.
+//
+// In set-covering mode, items may appear in more than one
+// selected column. A repair step is then applied: for each
+// duplicated item, choose exactly one selected bin to keep it
+// in and remove the other copies, minimizing the resulting
+// total bin cost by an exact branch-and-bound procedure.
+// -----------------------------------------------------
+bool LocalSearch::setCoveringNeighborhood(double timeLimitSeconds,
+                                          bool exactCover) {
+    if (scPool.empty()) {
+        return false;
+    }
+
+    const int n_items = solution->N;
+    const int n_cols = static_cast<int>(scPool.size());
+
+    try {
+        GRBEnv env(true);
+        env.set("OutputFlag", "0");
+        env.start();
+
+        GRBModel model(env);
+        model.set(GRB_DoubleParam_TimeLimit, timeLimitSeconds);
+        model.set(GRB_IntParam_MIPFocus, 1);
+
+        std::vector<GRBVar> x(n_cols);
+
+        for (int j = 0; j < n_cols; ++j) {
+            x[j] = model.addVar(
+                0.0,
+                1.0,
+                static_cast<double>(scPool[j].col.cost),
+                GRB_BINARY
+            );
+        }
+
+        std::vector<GRBLinExpr> cover(n_items);
+
+        for (int i = 0; i < n_items; ++i) {
+            cover[i] = 0;
+        }
+
+        for (int j = 0; j < n_cols; ++j) {
+            const SCColumn& col = scPool[j].col;
+
+            for (int item : col.items) {
+                cover[item] += x[j];
+            }
+        }
+
+        for (int i = 0; i < n_items; ++i) {
+            if (exactCover) {
+                model.addConstr(cover[i] == 1);
+            } else {
+                model.addConstr(cover[i] >= 1);
+            }
+        }
+
+        // MIP start from elite solution.
+        if (!eliteHashes.empty()) {
+            for (int j = 0; j < n_cols; ++j) {
+                if (eliteHashes.count(scPool[j].hash)) {
+                    x[j].set(GRB_DoubleAttr_Start, 1.0);
+                } else {
+                    x[j].set(GRB_DoubleAttr_Start, 0.0);
+                }
+            }
+        }
+
+        model.optimize();
+
+        int status = model.get(GRB_IntAttr_Status);
+
+        if (status != GRB_OPTIMAL &&
+            status != GRB_TIME_LIMIT) {
+            return false;
+        }
+
+        if (model.get(GRB_IntAttr_SolCount) == 0) {
+            return false;
+        }
+
+        std::vector<std::vector<int>> selectedBins;
+
+        for (int j = 0; j < n_cols; ++j) {
+            if (x[j].get(GRB_DoubleAttr_X) > 0.5) {
+                selectedBins.push_back(scPool[j].col.items);
+            }
+        }
+
+        if (selectedBins.empty()) {
+            return false;
+        }
+
+        std::vector<std::vector<int>> finalBins;
+
+        if (exactCover) {
+            // Exact-cover / set-partitioning mode:
+            // every item is already covered exactly once.
+            finalBins = selectedBins;
+        } else {
+            // Set-covering mode:
+            // items may be covered more than once, so remove duplicates.
+            finalBins = repairSetCoveringSolution(selectedBins);
+        }
+
+        if (finalBins.empty()) {
+            return false;
+        }
+
+        std::size_t newHash = hashSolution(finalBins);
+        std::size_t oldHash = hashSolution(extractBins(*solution));
+
+        if (newHash == oldHash) {
+            return false;
+        }
+
+        Solution candidate = buildSolutionFromBins(finalBins);
+
+        if (!candidate.isFeasible()) {
+            return false;
+        }
+
+        int oldObj = solution->computeObjective();
+        int newObj = candidate.computeObjective();
+
+        if (newObj >= oldObj) {
+            return false;
+        }
+
+        *solution = candidate;
+
+        // New feasible incumbent can become the new elite.
+        if (newObj < eliteObjective) {
+            initializeSetCoveringFromElite(*solution);
+        }
+
+        addToSetCoveringPool(*solution);
+
+        return true;
+
+    } catch (GRBException& e) {
+        std::cerr << "Gurobi error in setCoveringNeighborhood: "
+                  << e.getMessage() << "\n";
+        return false;
+    } catch (...) {
+        std::cerr << "Unknown error in setCoveringNeighborhood\n";
+        return false;
+    }
+}
+
+std::vector<std::vector<int>> LocalSearch::repairSetCoveringSolution(
+    const std::vector<std::vector<int>>& inputBins) {
+    const int nItems = solution->N;
+    const int nBins = static_cast<int>(inputBins.size());
+
+    if (nBins == 0) {
+        return inputBins;
+    }
+
+    const auto& inst = solution->inst;
+
+    auto smallestFeasibleType = [&](int load) -> int {
+        if (load <= 0) return -1;
+
+        for (int k = 0; k < static_cast<int>(inst.binTypes.size()); ++k) {
+            if (load <= inst.binTypes[k].capacity) {
+                return k;
+            }
+        }
+
+        return -1;
+    };
+
+    auto binCostFromLoad = [&](int load) -> int {
+        int type = smallestFeasibleType(load);
+
+        if (type == -1) {
+            return std::numeric_limits<int>::max() / 4;
+        }
+
+        return inst.binTypes[type].cost;
+    };
+
+    auto totalBinCost = [&](const std::vector<int>& curLoad,
+                            const std::vector<int>& curSize) -> int {
+        int total = 0;
+
+        for (int b = 0; b < nBins; ++b) {
+            if (curSize[b] > 0) {
+                total += binCostFromLoad(curLoad[b]);
+            }
+        }
+
+        return total;
+    };
+
+    // ---------------- Build item -> bins ----------------
+    std::vector<std::vector<int>> itemBins(nItems);
+    std::vector<int> binSize(nBins, 0);
+    std::vector<int> binLoad(nBins, 0);
+
+    for (int b = 0; b < nBins; ++b) {
+        binSize[b] = static_cast<int>(inputBins[b].size());
+
+        for (int item : inputBins[b]) {
+            itemBins[item].push_back(b);
+            binLoad[b] += inst.weights[item];
+        }
+    }
+
+    // If any item is uncovered, repair is impossible.
+    for (int item = 0; item < nItems; ++item) {
+        if (itemBins[item].empty()) {
+            return inputBins;
+        }
+    }
+
+    // ---------------- Duplicated items only ----------------
+    std::vector<int> dupItems;
+
+    for (int item = 0; item < nItems; ++item) {
+        if (static_cast<int>(itemBins[item].size()) > 1) {
+            dupItems.push_back(item);
+        }
+    }
+
+    if (dupItems.empty()) {
+        return inputBins;
+    }
+
+    // Most constrained first; heavier items first as tie-break.
+    std::sort(
+        dupItems.begin(),
+        dupItems.end(),
+        [&](int a, int b) {
+            if (itemBins[a].size() != itemBins[b].size()) {
+                return itemBins[a].size() < itemBins[b].size();
+            }
+
+            return inst.weights[a] > inst.weights[b];
+        }
+    );
+
+    const int D = static_cast<int>(dupItems.size());
+
+    std::vector<int> chosenBin(D, -1);
+    std::vector<int> bestChoice(D, -1);
+
+    int bestCost = std::numeric_limits<int>::max();
+
+    // For each bin, total weight of unresolved duplicated items currently in it.
+    std::vector<int> unresolvedDupWeightInBin(nBins, 0);
+
+    for (int item : dupItems) {
+        for (int b : itemBins[item]) {
+            unresolvedDupWeightInBin[b] += inst.weights[item];
+        }
+    }
+
+    auto lowerBound = [&](const std::vector<int>& curLoad,
+                          const std::vector<int>& curSize,
+                          const std::vector<int>& curUnresolvedDupWeight) -> int {
+        int lb = 0;
+
+        for (int b = 0; b < nBins; ++b) {
+            if (curSize[b] == 0) continue;
+
+            // Best possible future for this bin:
+            // remove every unresolved duplicate item still present in it.
+            int mandatoryLoad = curLoad[b] - curUnresolvedDupWeight[b];
+
+            if (mandatoryLoad > 0) {
+                lb += binCostFromLoad(mandatoryLoad);
+            }
+        }
+
+        return lb;
+    };
+
+    std::function<void(int,
+                       std::vector<int>&,
+                       std::vector<int>&,
+                       std::vector<int>&)> dfs =
+        [&](int idx,
+            std::vector<int>& curSize,
+            std::vector<int>& curLoad,
+            std::vector<int>& curUnresolvedDupWeight) {
+            int lb = lowerBound(curLoad, curSize, curUnresolvedDupWeight);
+
+            if (lb >= bestCost) {
+                return;
+            }
+
+            if (idx == D) {
+                int cost = totalBinCost(curLoad, curSize);
+
+                if (cost < bestCost) {
+                    bestCost = cost;
+                    bestChoice = chosenBin;
+                }
+
+                return;
+            }
+
+            int item = dupItems[idx];
+            int w = inst.weights[item];
+
+            const std::vector<int>& candidateBins = itemBins[item];
+
+            std::vector<int> ordered = candidateBins;
+
+            // Ordering only affects speed, not exactness.
+            std::sort(
+                ordered.begin(),
+                ordered.end(),
+                [&](int keepA, int keepB) {
+                    auto localCostIfKeep = [&](int keepBin) {
+                        int delta = 0;
+
+                        for (int b : candidateBins) {
+                            int oldCost = curSize[b] > 0
+                                        ? binCostFromLoad(curLoad[b])
+                                        : 0;
+
+                            int newSize = curSize[b];
+                            int newLoad = curLoad[b];
+
+                            if (b != keepBin) {
+                                newSize -= 1;
+                                newLoad -= w;
+                            }
+
+                            int newCost = newSize > 0
+                                        ? binCostFromLoad(newLoad)
+                                        : 0;
+
+                            delta += newCost - oldCost;
+                        }
+
+                        return delta;
+                    };
+
+                    return localCostIfKeep(keepA) < localCostIfKeep(keepB);
+                }
+            );
+
+            for (int keepBin : ordered) {
+                chosenBin[idx] = keepBin;
+
+                // This item is now resolved, so remove its weight from the
+                // unresolved-duplicate weight of every bin that contains it.
+                for (int b : candidateBins) {
+                    curUnresolvedDupWeight[b] -= w;
+                }
+
+                // Remove this item from all bins except the chosen one.
+                for (int b : candidateBins) {
+                    if (b == keepBin) continue;
+
+                    curSize[b] -= 1;
+                    curLoad[b] -= w;
+                }
+
+                dfs(idx + 1, curSize, curLoad, curUnresolvedDupWeight);
+
+                // Rollback removals.
+                for (int b : candidateBins) {
+                    if (b == keepBin) continue;
+
+                    curSize[b] += 1;
+                    curLoad[b] += w;
+                }
+
+                // Rollback unresolved status.
+                for (int b : candidateBins) {
+                    curUnresolvedDupWeight[b] += w;
+                }
+
+                chosenBin[idx] = -1;
+            }
+        };
+
+    std::vector<int> curSize = binSize;
+    std::vector<int> curLoad = binLoad;
+    std::vector<int> curUnresolvedDupWeight = unresolvedDupWeightInBin;
+
+    dfs(0, curSize, curLoad, curUnresolvedDupWeight);
+
+    if (bestCost == std::numeric_limits<int>::max()) {
+        return inputBins;
+    }
+
+    // ---------------- Reconstruct best repaired bins ----------------
+    std::vector<std::vector<int>> repairedBins = inputBins;
+
+    for (int idx = 0; idx < D; ++idx) {
+        int item = dupItems[idx];
+        int keepBin = bestChoice[idx];
+
+        for (int b : itemBins[item]) {
+            if (b == keepBin) continue;
+
+            auto& bin = repairedBins[b];
+            auto it = std::find(bin.begin(), bin.end(), item);
+
+            if (it != bin.end()) {
+                bin.erase(it);
+            }
+        }
+    }
+
+    // Remove empty bins.
+    std::vector<std::vector<int>> compactBins;
+    compactBins.reserve(repairedBins.size());
+
+    for (auto& bin : repairedBins) {
+        if (!bin.empty()) {
+            compactBins.push_back(std::move(bin));
+        }
+    }
+
+    return compactBins;
 }
 
 // ---- Set solution ----

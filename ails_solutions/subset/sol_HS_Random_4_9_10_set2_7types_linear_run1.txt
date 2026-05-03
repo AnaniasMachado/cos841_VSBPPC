@@ -1,0 +1,558 @@
+instance_file ../instances/set_2/N_1000/HS_Random_4_9_10.txt
+config set2_7types_linear
+algorithm AILS
+run 1
+seed 42
+start_time 2026-05-03 05:10:18
+kw 300
+kc 250
+max_iterations 500
+max_no_improve 40
+acceptance RW
+improvement BI
+builder IFFD
+use_ucb false
+c 0.5718
+use_qrvnd false
+alpha 0.1495
+gamma 0.7455
+epsilon 0.0377
+exact_cover true
+time_limit 600
+status FEASIBLE
+runtime 45.992026
+objective 127420.000000
+total_bin_cost 127420
+total_excess 0
+total_conflicts 0
+
+solution
+bin 0 type 6 capacity 250 cost 250 items 647 load 250
+bin 1 type 6 capacity 250 cost 250 items 378 load 250
+bin 2 type 6 capacity 250 cost 250 items 379 load 250
+bin 3 type 6 capacity 250 cost 250 items 781 load 250
+bin 4 type 6 capacity 250 cost 250 items 354 load 250
+bin 5 type 6 capacity 250 cost 250 items 483 load 250
+bin 6 type 6 capacity 250 cost 250 items 595 load 249
+bin 7 type 6 capacity 250 cost 250 items 582 load 249
+bin 8 type 6 capacity 250 cost 250 items 863 load 249
+bin 9 type 6 capacity 250 cost 250 items 634 28 load 250
+bin 10 type 6 capacity 250 cost 250 items 495 load 248
+bin 11 type 6 capacity 250 cost 250 items 543 971 load 249
+bin 12 type 6 capacity 250 cost 250 items 486 load 247
+bin 13 type 6 capacity 250 cost 250 items 491 load 247
+bin 14 type 6 capacity 250 cost 250 items 441 load 247
+bin 15 type 6 capacity 250 cost 250 items 217 load 246
+bin 16 type 6 capacity 250 cost 250 items 297 load 246
+bin 17 type 6 capacity 250 cost 250 items 131 969 load 250
+bin 18 type 6 capacity 250 cost 250 items 810 515 load 249
+bin 19 type 6 capacity 250 cost 250 items 296 load 245
+bin 20 type 6 capacity 250 cost 250 items 231 load 243
+bin 21 type 6 capacity 250 cost 250 items 692 122 load 247
+bin 22 type 6 capacity 250 cost 250 items 72 417 load 248
+bin 23 type 6 capacity 250 cost 250 items 160 load 244
+bin 24 type 6 capacity 250 cost 250 items 623 616 load 247
+bin 25 type 6 capacity 250 cost 250 items 841 load 243
+bin 26 type 6 capacity 250 cost 250 items 49 986 load 250
+bin 27 type 6 capacity 250 cost 250 items 351 962 load 247
+bin 28 type 6 capacity 250 cost 250 items 568 649 load 248
+bin 29 type 6 capacity 250 cost 250 items 716 398 load 250
+bin 30 type 6 capacity 250 cost 250 items 126 151 load 245
+bin 31 type 6 capacity 250 cost 250 items 757 572 load 248
+bin 32 type 6 capacity 250 cost 250 items 925 869 load 244
+bin 33 type 6 capacity 250 cost 250 items 672 836 load 250
+bin 34 type 6 capacity 250 cost 250 items 601 13 load 245
+bin 35 type 6 capacity 250 cost 250 items 561 966 load 249
+bin 36 type 6 capacity 250 cost 250 items 78 29 load 249
+bin 37 type 6 capacity 250 cost 250 items 488 load 239
+bin 38 type 6 capacity 250 cost 250 items 295 671 load 245
+bin 39 type 6 capacity 250 cost 250 items 597 314 load 250
+bin 40 type 6 capacity 250 cost 250 items 484 98 load 244
+bin 41 type 6 capacity 250 cost 250 items 574 65 load 249
+bin 42 type 6 capacity 250 cost 250 items 946 load 238
+bin 43 type 6 capacity 250 cost 250 items 695 768 load 248
+bin 44 type 6 capacity 250 cost 250 items 341 308 load 245
+bin 45 type 6 capacity 250 cost 250 items 678 844 load 249
+bin 46 type 6 capacity 250 cost 250 items 306 load 236
+bin 47 type 6 capacity 250 cost 250 items 730 445 load 250
+bin 48 type 6 capacity 250 cost 250 items 920 857 load 249
+bin 49 type 6 capacity 250 cost 250 items 978 147 load 250
+bin 50 type 6 capacity 250 cost 250 items 384 319 load 247
+bin 51 type 6 capacity 250 cost 250 items 853 698 load 250
+bin 52 type 6 capacity 250 cost 250 items 521 120 load 245
+bin 53 type 6 capacity 250 cost 250 items 941 18 load 250
+bin 54 type 6 capacity 250 cost 250 items 503 959 load 250
+bin 55 type 6 capacity 250 cost 250 items 215 39 load 250
+bin 56 type 6 capacity 250 cost 250 items 610 84 load 250
+bin 57 type 6 capacity 250 cost 250 items 411 219 load 247
+bin 58 type 6 capacity 250 cost 250 items 666 571 load 250
+bin 59 type 6 capacity 250 cost 250 items 333 690 load 249
+bin 60 type 6 capacity 250 cost 250 items 614 682 load 249
+bin 61 type 6 capacity 250 cost 250 items 103 176 load 250
+bin 62 type 6 capacity 250 cost 250 items 914 51 load 248
+bin 63 type 6 capacity 250 cost 250 items 257 889 load 250
+bin 64 type 6 capacity 250 cost 250 items 550 906 load 250
+bin 65 type 6 capacity 250 cost 250 items 145 113 load 243
+bin 66 type 6 capacity 250 cost 250 items 876 159 load 247
+bin 67 type 6 capacity 250 cost 250 items 563 803 load 249
+bin 68 type 6 capacity 250 cost 250 items 630 658 load 250
+bin 69 type 6 capacity 250 cost 250 items 242 909 load 249
+bin 70 type 6 capacity 250 cost 250 items 251 988 load 250
+bin 71 type 6 capacity 250 cost 250 items 951 493 load 250
+bin 72 type 6 capacity 250 cost 250 items 748 235 load 248
+bin 73 type 6 capacity 250 cost 250 items 661 662 load 249
+bin 74 type 6 capacity 250 cost 250 items 655 818 load 246
+bin 75 type 6 capacity 250 cost 250 items 615 621 load 249
+bin 76 type 6 capacity 250 cost 250 items 711 477 load 250
+bin 77 type 6 capacity 250 cost 250 items 3 585 load 246
+bin 78 type 6 capacity 250 cost 250 items 584 870 load 248
+bin 79 type 6 capacity 250 cost 250 items 670 213 load 244
+bin 80 type 6 capacity 250 cost 250 items 344 127 load 249
+bin 81 type 6 capacity 250 cost 250 items 727 624 load 249
+bin 82 type 6 capacity 250 cost 250 items 960 815 load 250
+bin 83 type 6 capacity 250 cost 250 items 526 116 load 240
+bin 84 type 6 capacity 250 cost 250 items 63 880 load 248
+bin 85 type 6 capacity 250 cost 250 items 26 994 load 250
+bin 86 type 6 capacity 250 cost 250 items 467 664 load 250
+bin 87 type 6 capacity 250 cost 250 items 884 360 load 246
+bin 88 type 6 capacity 250 cost 250 items 657 829 load 249
+bin 89 type 6 capacity 250 cost 250 items 260 55 load 249
+bin 90 type 6 capacity 250 cost 250 items 444 56 load 247
+bin 91 type 6 capacity 250 cost 250 items 248 793 load 248
+bin 92 type 6 capacity 250 cost 250 items 46 178 load 250
+bin 93 type 6 capacity 250 cost 250 items 578 627 load 249
+bin 94 type 6 capacity 250 cost 250 items 929 472 load 248
+bin 95 type 5 capacity 220 cost 220 items 157 load 219
+bin 96 type 5 capacity 220 cost 220 items 824 load 220
+bin 97 type 5 capacity 220 cost 220 items 756 load 219
+bin 98 type 6 capacity 250 cost 250 items 394 992 load 248
+bin 99 type 6 capacity 250 cost 250 items 673 683 load 250
+bin 100 type 6 capacity 250 cost 250 items 592 855 load 250
+bin 101 type 5 capacity 220 cost 220 items 654 load 218
+bin 102 type 6 capacity 250 cost 250 items 201 850 load 248
+bin 103 type 6 capacity 250 cost 250 items 0 356 load 249
+bin 104 type 6 capacity 250 cost 250 items 871 707 load 250
+bin 105 type 6 capacity 250 cost 250 items 770 425 load 248
+bin 106 type 6 capacity 250 cost 250 items 346 485 load 248
+bin 107 type 6 capacity 250 cost 250 items 685 468 load 248
+bin 108 type 6 capacity 250 cost 250 items 386 236 load 245
+bin 109 type 6 capacity 250 cost 250 items 256 20 load 247
+bin 110 type 6 capacity 250 cost 250 items 206 504 load 249
+bin 111 type 6 capacity 250 cost 250 items 560 104 load 247
+bin 112 type 6 capacity 250 cost 250 items 996 16 load 248
+bin 113 type 6 capacity 250 cost 250 items 234 766 load 250
+bin 114 type 6 capacity 250 cost 250 items 967 928 load 248
+bin 115 type 6 capacity 250 cost 250 items 956 276 load 247
+bin 116 type 6 capacity 250 cost 250 items 259 633 load 249
+bin 117 type 6 capacity 250 cost 250 items 87 497 load 247
+bin 118 type 6 capacity 250 cost 250 items 839 413 load 249
+bin 119 type 6 capacity 250 cost 250 items 827 860 load 249
+bin 120 type 6 capacity 250 cost 250 items 541 47 load 250
+bin 121 type 6 capacity 250 cost 250 items 324 991 load 246
+bin 122 type 6 capacity 250 cost 250 items 622 118 load 250
+bin 123 type 6 capacity 250 cost 250 items 433 837 load 246
+bin 124 type 6 capacity 250 cost 250 items 376 710 load 249
+bin 125 type 6 capacity 250 cost 250 items 489 923 load 246
+bin 126 type 6 capacity 250 cost 250 items 980 117 load 245
+bin 127 type 6 capacity 250 cost 250 items 133 423 load 250
+bin 128 type 6 capacity 250 cost 250 items 887 73 load 246
+bin 129 type 6 capacity 250 cost 250 items 831 618 load 243
+bin 130 type 6 capacity 250 cost 250 items 984 161 load 248
+bin 131 type 6 capacity 250 cost 250 items 293 99 load 244
+bin 132 type 6 capacity 250 cost 250 items 17 261 load 242
+bin 133 type 6 capacity 250 cost 250 items 717 22 load 249
+bin 134 type 6 capacity 250 cost 250 items 849 832 load 245
+bin 135 type 6 capacity 250 cost 250 items 640 90 load 247
+bin 136 type 6 capacity 250 cost 250 items 62 989 load 248
+bin 137 type 6 capacity 250 cost 250 items 977 121 load 248
+bin 138 type 6 capacity 250 cost 250 items 702 42 load 243
+bin 139 type 5 capacity 220 cost 220 items 61 395 load 218
+bin 140 type 6 capacity 250 cost 250 items 130 656 load 250
+bin 141 type 6 capacity 250 cost 250 items 330 132 load 245
+bin 142 type 6 capacity 250 cost 250 items 650 447 load 245
+bin 143 type 6 capacity 250 cost 250 items 448 546 load 245
+bin 144 type 6 capacity 250 cost 250 items 362 879 load 250
+bin 145 type 6 capacity 250 cost 250 items 91 266 load 249
+bin 146 type 6 capacity 250 cost 250 items 854 851 load 250
+bin 147 type 6 capacity 250 cost 250 items 262 912 load 236
+bin 148 type 6 capacity 250 cost 250 items 842 366 load 248
+bin 149 type 6 capacity 250 cost 250 items 738 885 load 250
+bin 150 type 6 capacity 250 cost 250 items 607 619 load 246
+bin 151 type 6 capacity 250 cost 250 items 918 279 load 250
+bin 152 type 6 capacity 250 cost 250 items 796 64 load 248
+bin 153 type 5 capacity 220 cost 220 items 908 865 load 217
+bin 154 type 6 capacity 250 cost 250 items 772 4 load 246
+bin 155 type 6 capacity 250 cost 250 items 229 186 load 241
+bin 156 type 6 capacity 250 cost 250 items 846 286 load 235
+bin 157 type 6 capacity 250 cost 250 items 608 873 load 250
+bin 158 type 5 capacity 220 cost 220 items 537 328 load 216
+bin 159 type 6 capacity 250 cost 250 items 368 233 load 247
+bin 160 type 6 capacity 250 cost 250 items 754 528 load 241
+bin 161 type 6 capacity 250 cost 250 items 385 822 load 246
+bin 162 type 6 capacity 250 cost 250 items 82 506 load 250
+bin 163 type 6 capacity 250 cost 250 items 517 780 load 248
+bin 164 type 6 capacity 250 cost 250 items 436 335 load 250
+bin 165 type 6 capacity 250 cost 250 items 283 79 load 247
+bin 166 type 5 capacity 220 cost 220 items 373 365 load 220
+bin 167 type 6 capacity 250 cost 250 items 70 406 load 249
+bin 168 type 6 capacity 250 cost 250 items 900 762 load 244
+bin 169 type 6 capacity 250 cost 250 items 416 232 load 249
+bin 170 type 6 capacity 250 cost 250 items 44 913 load 249
+bin 171 type 6 capacity 250 cost 250 items 509 490 load 249
+bin 172 type 6 capacity 250 cost 250 items 102 396 load 250
+bin 173 type 6 capacity 250 cost 250 items 318 767 load 250
+bin 174 type 6 capacity 250 cost 250 items 825 487 load 247
+bin 175 type 6 capacity 250 cost 250 items 303 208 load 244
+bin 176 type 6 capacity 250 cost 250 items 302 882 load 243
+bin 177 type 6 capacity 250 cost 250 items 58 476 load 250
+bin 178 type 6 capacity 250 cost 250 items 197 270 load 246
+bin 179 type 5 capacity 220 cost 220 items 498 901 load 211
+bin 180 type 6 capacity 250 cost 250 items 548 169 load 244
+bin 181 type 6 capacity 250 cost 250 items 168 535 load 249
+bin 182 type 6 capacity 250 cost 250 items 500 937 load 250
+bin 183 type 5 capacity 220 cost 220 items 567 317 load 210
+bin 184 type 4 capacity 190 cost 190 items 439 load 189
+bin 185 type 4 capacity 190 cost 190 items 577 load 189
+bin 186 type 6 capacity 250 cost 250 items 144 848 load 249
+bin 187 type 6 capacity 250 cost 250 items 749 40 load 249
+bin 188 type 6 capacity 250 cost 250 items 499 963 load 250
+bin 189 type 6 capacity 250 cost 250 items 835 833 load 249
+bin 190 type 6 capacity 250 cost 250 items 583 426 load 250
+bin 191 type 6 capacity 250 cost 250 items 545 2 load 249
+bin 192 type 6 capacity 250 cost 250 items 696 53 load 250
+bin 193 type 6 capacity 250 cost 250 items 723 852 load 249
+bin 194 type 6 capacity 250 cost 250 items 694 895 load 250
+bin 195 type 6 capacity 250 cost 250 items 778 458 load 250
+bin 196 type 5 capacity 220 cost 220 items 635 195 load 220
+bin 197 type 6 capacity 250 cost 250 items 205 174 load 250
+bin 198 type 6 capacity 250 cost 250 items 785 798 load 249
+bin 199 type 6 capacity 250 cost 250 items 948 223 load 250
+bin 200 type 4 capacity 190 cost 190 items 420 load 185
+bin 201 type 6 capacity 250 cost 250 items 602 76 load 249
+bin 202 type 6 capacity 250 cost 250 items 638 10 load 249
+bin 203 type 6 capacity 250 cost 250 items 680 552 load 250
+bin 204 type 6 capacity 250 cost 250 items 327 31 load 247
+bin 205 type 6 capacity 250 cost 250 items 389 784 load 246
+bin 206 type 4 capacity 190 cost 190 items 114 load 185
+bin 207 type 5 capacity 220 cost 220 items 687 390 load 211
+bin 208 type 6 capacity 250 cost 250 items 177 225 load 250
+bin 209 type 6 capacity 250 cost 250 items 196 442 load 250
+bin 210 type 5 capacity 220 cost 220 items 307 669 load 218
+bin 211 type 6 capacity 250 cost 250 items 198 764 load 246
+bin 212 type 6 capacity 250 cost 250 items 675 140 load 248
+bin 213 type 6 capacity 250 cost 250 items 845 511 load 242
+bin 214 type 6 capacity 250 cost 250 items 343 228 load 249
+bin 215 type 5 capacity 220 cost 220 items 594 407 load 217
+bin 216 type 6 capacity 250 cost 250 items 192 380 load 250
+bin 217 type 5 capacity 220 cost 220 items 280 603 load 212
+bin 218 type 6 capacity 250 cost 250 items 348 740 load 247
+bin 219 type 6 capacity 250 cost 250 items 791 916 load 249
+bin 220 type 6 capacity 250 cost 250 items 465 9 load 241
+bin 221 type 6 capacity 250 cost 250 items 808 972 load 249
+bin 222 type 6 capacity 250 cost 250 items 128 945 load 250
+bin 223 type 5 capacity 220 cost 220 items 559 573 load 211
+bin 224 type 6 capacity 250 cost 250 items 172 826 load 248
+bin 225 type 6 capacity 250 cost 250 items 171 893 load 250
+bin 226 type 6 capacity 250 cost 250 items 148 33 load 242
+bin 227 type 6 capacity 250 cost 250 items 5 204 load 250
+bin 228 type 6 capacity 250 cost 250 items 743 964 load 245
+bin 229 type 4 capacity 190 cost 190 items 728 224 load 187
+bin 230 type 6 capacity 250 cost 250 items 352 961 load 248
+bin 231 type 6 capacity 250 cost 250 items 374 287 load 246
+bin 232 type 6 capacity 250 cost 250 items 1 957 load 249
+bin 233 type 6 capacity 250 cost 250 items 496 409 load 246
+bin 234 type 6 capacity 250 cost 250 items 54 200 load 247
+bin 235 type 6 capacity 250 cost 250 items 300 811 load 243
+bin 236 type 6 capacity 250 cost 250 items 512 703 load 248
+bin 237 type 6 capacity 250 cost 250 items 37 21 load 249
+bin 238 type 6 capacity 250 cost 250 items 809 668 load 239
+bin 239 type 6 capacity 250 cost 250 items 452 135 load 249
+bin 240 type 6 capacity 250 cost 250 items 902 359 load 249
+bin 241 type 6 capacity 250 cost 250 items 982 801 load 248
+bin 242 type 6 capacity 250 cost 250 items 676 238 load 247
+bin 243 type 6 capacity 250 cost 250 items 741 979 load 247
+bin 244 type 6 capacity 250 cost 250 items 334 795 load 248
+bin 245 type 6 capacity 250 cost 250 items 868 175 load 248
+bin 246 type 6 capacity 250 cost 250 items 921 349 load 245
+bin 247 type 6 capacity 250 cost 250 items 298 173 load 250
+bin 248 type 6 capacity 250 cost 250 items 71 589 load 248
+bin 249 type 6 capacity 250 cost 250 items 437 591 load 249
+bin 250 type 6 capacity 250 cost 250 items 220 917 load 247
+bin 251 type 6 capacity 250 cost 250 items 347 446 load 248
+bin 252 type 6 capacity 250 cost 250 items 667 790 load 244
+bin 253 type 6 capacity 250 cost 250 items 422 353 load 250
+bin 254 type 6 capacity 250 cost 250 items 492 226 load 246
+bin 255 type 6 capacity 250 cost 250 items 247 399 load 249
+bin 256 type 6 capacity 250 cost 250 items 67 434 load 247
+bin 257 type 6 capacity 250 cost 250 items 337 883 load 246
+bin 258 type 6 capacity 250 cost 250 items 816 708 load 247
+bin 259 type 6 capacity 250 cost 250 items 96 596 load 246
+bin 260 type 6 capacity 250 cost 250 items 752 185 load 249
+bin 261 type 6 capacity 250 cost 250 items 919 95 load 250
+bin 262 type 6 capacity 250 cost 250 items 975 369 load 247
+bin 263 type 6 capacity 250 cost 250 items 81 538 load 241
+bin 264 type 6 capacity 250 cost 250 items 934 106 load 249
+bin 265 type 6 capacity 250 cost 250 items 24 720 load 249
+bin 266 type 6 capacity 250 cost 250 items 617 525 load 246
+bin 267 type 6 capacity 250 cost 250 items 311 806 load 246
+bin 268 type 6 capacity 250 cost 250 items 575 470 load 249
+bin 269 type 6 capacity 250 cost 250 items 357 182 load 250
+bin 270 type 6 capacity 250 cost 250 items 355 581 load 249
+bin 271 type 3 capacity 160 cost 160 items 438 load 160
+bin 272 type 6 capacity 250 cost 250 items 943 111 load 250
+bin 273 type 6 capacity 250 cost 250 items 697 210 load 248
+bin 274 type 6 capacity 250 cost 250 items 505 644 load 250
+bin 275 type 6 capacity 250 cost 250 items 533 404 load 248
+bin 276 type 6 capacity 250 cost 250 items 890 677 load 249
+bin 277 type 6 capacity 250 cost 250 items 847 419 load 250
+bin 278 type 6 capacity 250 cost 250 items 294 143 load 246
+bin 279 type 6 capacity 250 cost 250 items 797 388 load 248
+bin 280 type 6 capacity 250 cost 250 items 221 705 load 249
+bin 281 type 6 capacity 250 cost 250 items 715 285 load 247
+bin 282 type 6 capacity 250 cost 250 items 665 549 load 244
+bin 283 type 6 capacity 250 cost 250 items 209 83 load 249
+bin 284 type 6 capacity 250 cost 250 items 211 759 load 249
+bin 285 type 6 capacity 250 cost 250 items 418 579 load 248
+bin 286 type 6 capacity 250 cost 250 items 427 968 load 247
+bin 287 type 6 capacity 250 cost 250 items 188 936 load 250
+bin 288 type 6 capacity 250 cost 250 items 867 323 load 250
+bin 289 type 6 capacity 250 cost 250 items 875 524 load 244
+bin 290 type 6 capacity 250 cost 250 items 544 77 load 250
+bin 291 type 6 capacity 250 cost 250 items 179 158 load 250
+bin 292 type 6 capacity 250 cost 250 items 783 97 load 239
+bin 293 type 6 capacity 250 cost 250 items 922 775 load 249
+bin 294 type 6 capacity 250 cost 250 items 32 501 load 249
+bin 295 type 6 capacity 250 cost 250 items 562 75 load 246
+bin 296 type 6 capacity 250 cost 250 items 138 100 load 247
+bin 297 type 6 capacity 250 cost 250 items 222 555 load 247
+bin 298 type 6 capacity 250 cost 250 items 899 23 load 250
+bin 299 type 6 capacity 250 cost 250 items 508 52 load 250
+bin 300 type 6 capacity 250 cost 250 items 43 714 load 250
+bin 301 type 6 capacity 250 cost 250 items 150 659 load 250
+bin 302 type 6 capacity 250 cost 250 items 997 629 load 250
+bin 303 type 5 capacity 220 cost 220 items 823 976 load 219
+bin 304 type 6 capacity 250 cost 250 items 316 700 load 250
+bin 305 type 6 capacity 250 cost 250 items 312 93 load 249
+bin 306 type 6 capacity 250 cost 250 items 733 613 load 247
+bin 307 type 6 capacity 250 cost 250 items 66 350 load 250
+bin 308 type 6 capacity 250 cost 250 items 254 212 load 250
+bin 309 type 6 capacity 250 cost 250 items 652 713 load 250
+bin 310 type 6 capacity 250 cost 250 items 516 719 load 246
+bin 311 type 6 capacity 250 cost 250 items 60 751 load 250
+bin 312 type 6 capacity 250 cost 250 items 112 974 load 244
+bin 313 type 6 capacity 250 cost 250 items 828 674 load 247
+bin 314 type 6 capacity 250 cost 250 items 777 457 load 249
+bin 315 type 6 capacity 250 cost 250 items 193 639 load 250
+bin 316 type 6 capacity 250 cost 250 items 456 216 load 247
+bin 317 type 6 capacity 250 cost 250 items 377 290 load 250
+bin 318 type 6 capacity 250 cost 250 items 191 858 load 245
+bin 319 type 6 capacity 250 cost 250 items 915 239 load 248
+bin 320 type 6 capacity 250 cost 250 items 462 722 load 250
+bin 321 type 6 capacity 250 cost 250 items 935 89 load 249
+bin 322 type 6 capacity 250 cost 250 items 892 471 load 250
+bin 323 type 6 capacity 250 cost 250 items 641 758 load 250
+bin 324 type 6 capacity 250 cost 250 items 520 926 load 250
+bin 325 type 6 capacity 250 cost 250 items 799 753 load 249
+bin 326 type 6 capacity 250 cost 250 items 364 611 load 241
+bin 327 type 6 capacity 250 cost 250 items 637 856 load 249
+bin 328 type 6 capacity 250 cost 250 items 910 124 load 250
+bin 329 type 6 capacity 250 cost 250 items 821 435 load 246
+bin 330 type 6 capacity 250 cost 250 items 164 451 load 250
+bin 331 type 6 capacity 250 cost 250 items 586 315 load 247
+bin 332 type 6 capacity 250 cost 250 items 50 237 load 248
+bin 333 type 6 capacity 250 cost 250 items 631 338 load 250
+bin 334 type 6 capacity 250 cost 250 items 336 646 load 250
+bin 335 type 1 capacity 100 cost 100 items 322 load 100
+bin 336 type 6 capacity 250 cost 250 items 636 534 load 248
+bin 337 type 6 capacity 250 cost 250 items 449 732 load 248
+bin 338 type 6 capacity 250 cost 250 items 761 776 load 250
+bin 339 type 6 capacity 250 cost 250 items 48 693 load 250
+bin 340 type 6 capacity 250 cost 250 items 651 463 load 249
+bin 341 type 6 capacity 250 cost 250 items 203 459 load 250
+bin 342 type 6 capacity 250 cost 250 items 101 897 load 249
+bin 343 type 6 capacity 250 cost 250 items 718 904 load 246
+bin 344 type 6 capacity 250 cost 250 items 244 125 load 250
+bin 345 type 6 capacity 250 cost 250 items 460 361 load 250
+bin 346 type 6 capacity 250 cost 250 items 115 518 load 249
+bin 347 type 6 capacity 250 cost 250 items 958 569 load 249
+bin 348 type 6 capacity 250 cost 250 items 12 628 load 246
+bin 349 type 6 capacity 250 cost 250 items 370 547 load 250
+bin 350 type 5 capacity 220 cost 220 items 763 119 load 220
+bin 351 type 6 capacity 250 cost 250 items 903 789 load 242
+bin 352 type 6 capacity 250 cost 250 items 947 734 load 244
+bin 353 type 6 capacity 250 cost 250 items 510 282 950 load 250
+bin 354 type 6 capacity 250 cost 250 items 807 load 243
+bin 355 type 4 capacity 190 cost 190 items 944 139 load 187
+bin 356 type 6 capacity 250 cost 250 items 834 331 load 245
+bin 357 type 2 capacity 130 cost 130 items 11 load 129
+bin 358 type 6 capacity 250 cost 250 items 731 load 248
+bin 359 type 6 capacity 250 cost 250 items 170 704 load 236
+bin 360 type 1 capacity 100 cost 100 items 408 load 99
+bin 361 type 6 capacity 250 cost 250 items 57 461 load 244
+bin 362 type 6 capacity 250 cost 250 items 514 load 234
+bin 363 type 6 capacity 250 cost 250 items 264 942 load 250
+bin 364 type 6 capacity 250 cost 250 items 814 load 248
+bin 365 type 5 capacity 220 cost 220 items 898 249 load 220
+bin 366 type 6 capacity 250 cost 250 items 38 580 load 247
+bin 367 type 6 capacity 250 cost 250 items 606 243 load 246
+bin 368 type 4 capacity 190 cost 190 items 321 load 182
+bin 369 type 5 capacity 220 cost 220 items 263 183 load 218
+bin 370 type 6 capacity 250 cost 250 items 787 565 load 250
+bin 371 type 6 capacity 250 cost 250 items 620 660 load 249
+bin 372 type 6 capacity 250 cost 250 items 830 load 245
+bin 373 type 6 capacity 250 cost 250 items 632 412 load 241
+bin 374 type 6 capacity 250 cost 250 items 246 424 load 241
+bin 375 type 6 capacity 250 cost 250 items 474 load 247
+bin 376 type 6 capacity 250 cost 250 items 381 453 load 244
+bin 377 type 6 capacity 250 cost 250 items 108 load 241
+bin 378 type 6 capacity 250 cost 250 items 531 953 load 248
+bin 379 type 6 capacity 250 cost 250 items 156 742 load 249
+bin 380 type 6 capacity 250 cost 250 items 735 25 load 250
+bin 381 type 5 capacity 220 cost 220 items 391 141 load 214
+bin 382 type 5 capacity 220 cost 220 items 933 440 load 220
+bin 383 type 6 capacity 250 cost 250 items 981 299 load 249
+bin 384 type 5 capacity 220 cost 220 items 405 681 load 216
+bin 385 type 5 capacity 220 cost 220 items 721 536 load 219
+bin 386 type 5 capacity 220 cost 220 items 881 load 201
+bin 387 type 6 capacity 250 cost 250 items 393 812 load 246
+bin 388 type 6 capacity 250 cost 250 items 773 181 load 241
+bin 389 type 6 capacity 250 cost 250 items 765 428 load 245
+bin 390 type 5 capacity 220 cost 220 items 274 507 load 219
+bin 391 type 5 capacity 220 cost 220 items 94 464 load 220
+bin 392 type 3 capacity 160 cost 160 items 755 load 158
+bin 393 type 6 capacity 250 cost 250 items 397 609 load 247
+bin 394 type 6 capacity 250 cost 250 items 800 587 load 247
+bin 395 type 6 capacity 250 cost 250 items 726 230 load 248
+bin 396 type 6 capacity 250 cost 250 items 905 165 load 236
+bin 397 type 1 capacity 100 cost 100 items 305 load 99
+bin 398 type 5 capacity 220 cost 220 items 774 329 load 217
+bin 399 type 6 capacity 250 cost 250 items 983 605 load 247
+bin 400 type 2 capacity 130 cost 130 items 80 load 130
+bin 401 type 6 capacity 250 cost 250 items 556 227 load 240
+bin 402 type 6 capacity 250 cost 250 items 932 888 load 249
+bin 403 type 5 capacity 220 cost 220 items 993 747 load 217
+bin 404 type 6 capacity 250 cost 250 items 15 load 238
+bin 405 type 6 capacity 250 cost 250 items 184 245 load 247
+bin 406 type 4 capacity 190 cost 190 items 372 load 189
+bin 407 type 3 capacity 160 cost 160 items 653 load 158
+bin 408 type 3 capacity 160 cost 160 items 240 load 160
+bin 409 type 5 capacity 220 cost 220 items 709 990 load 220
+bin 410 type 4 capacity 190 cost 190 items 519 load 190
+bin 411 type 5 capacity 220 cost 220 items 267 401 load 218
+bin 412 type 5 capacity 220 cost 220 items 970 35 load 219
+bin 413 type 5 capacity 220 cost 220 items 400 745 load 220
+bin 414 type 1 capacity 100 cost 100 items 278 load 100
+bin 415 type 5 capacity 220 cost 220 items 952 473 load 220
+bin 416 type 4 capacity 190 cost 190 items 19 load 190
+bin 417 type 5 capacity 220 cost 220 items 973 479 load 218
+bin 418 type 6 capacity 250 cost 250 items 542 612 load 250
+bin 419 type 6 capacity 250 cost 250 items 864 469 load 243
+bin 420 type 6 capacity 250 cost 250 items 241 706 load 239
+bin 421 type 6 capacity 250 cost 250 items 269 588 load 248
+bin 422 type 5 capacity 220 cost 220 items 309 985 load 219
+bin 423 type 5 capacity 220 cost 220 items 86 107 load 218
+bin 424 type 6 capacity 250 cost 250 items 430 746 load 242
+bin 425 type 5 capacity 220 cost 220 items 625 342 load 220
+bin 426 type 5 capacity 220 cost 220 items 949 273 load 219
+bin 427 type 6 capacity 250 cost 250 items 558 162 load 247
+bin 428 type 6 capacity 250 cost 250 items 167 163 load 248
+bin 429 type 5 capacity 220 cost 220 items 529 432 load 206
+bin 430 type 6 capacity 250 cost 250 items 45 253 load 245
+bin 431 type 5 capacity 220 cost 220 items 363 36 load 220
+bin 432 type 6 capacity 250 cost 250 items 288 769 load 242
+bin 433 type 5 capacity 220 cost 220 items 8 load 220
+bin 434 type 6 capacity 250 cost 250 items 14 258 load 250
+bin 435 type 5 capacity 220 cost 220 items 88 838 load 220
+bin 436 type 6 capacity 250 cost 250 items 691 896 load 248
+bin 437 type 6 capacity 250 cost 250 items 403 load 241
+bin 438 type 6 capacity 250 cost 250 items 739 940 load 249
+bin 439 type 6 capacity 250 cost 250 items 59 938 load 241
+bin 440 type 6 capacity 250 cost 250 items 802 332 load 250
+bin 441 type 4 capacity 190 cost 190 items 724 load 181
+bin 442 type 5 capacity 220 cost 220 items 891 340 load 218
+bin 443 type 4 capacity 190 cost 190 items 320 805 load 187
+bin 444 type 4 capacity 190 cost 190 items 513 load 176
+bin 445 type 5 capacity 220 cost 220 items 725 786 load 218
+bin 446 type 6 capacity 250 cost 250 items 69 794 load 249
+bin 447 type 6 capacity 250 cost 250 items 105 939 load 237
+bin 448 type 4 capacity 190 cost 190 items 387 911 load 189
+bin 449 type 5 capacity 220 cost 220 items 712 136 load 220
+bin 450 type 5 capacity 220 cost 220 items 679 301 load 218
+bin 451 type 6 capacity 250 cost 250 items 110 326 load 246
+bin 452 type 5 capacity 220 cost 220 items 760 142 load 219
+bin 453 type 6 capacity 250 cost 250 items 289 878 load 250
+bin 454 type 5 capacity 220 cost 220 items 645 590 load 216
+bin 455 type 4 capacity 190 cost 190 items 153 421 load 189
+bin 456 type 3 capacity 160 cost 160 items 7 109 load 159
+bin 457 type 6 capacity 250 cost 250 items 750 74 load 242
+bin 458 type 6 capacity 250 cost 250 items 874 553 load 242
+bin 459 type 6 capacity 250 cost 250 items 383 152 load 247
+bin 460 type 4 capacity 190 cost 190 items 281 30 load 189
+bin 461 type 6 capacity 250 cost 250 items 843 643 load 248
+bin 462 type 6 capacity 250 cost 250 items 268 859 load 242
+bin 463 type 6 capacity 250 cost 250 items 272 291 load 247
+bin 464 type 6 capacity 250 cost 250 items 415 431 load 248
+bin 465 type 6 capacity 250 cost 250 items 129 155 load 247
+bin 466 type 6 capacity 250 cost 250 items 123 382 load 250
+bin 467 type 6 capacity 250 cost 250 items 134 load 241
+bin 468 type 6 capacity 250 cost 250 items 92 190 6 load 250
+bin 469 type 6 capacity 250 cost 250 items 265 339 load 249
+bin 470 type 6 capacity 250 cost 250 items 371 866 load 248
+bin 471 type 6 capacity 250 cost 250 items 701 686 load 248
+bin 472 type 6 capacity 250 cost 250 items 523 149 load 249
+bin 473 type 6 capacity 250 cost 250 items 820 604 load 244
+bin 474 type 5 capacity 220 cost 220 items 481 284 load 216
+bin 475 type 6 capacity 250 cost 250 items 414 180 load 245
+bin 476 type 6 capacity 250 cost 250 items 576 907 load 249
+bin 477 type 5 capacity 220 cost 220 items 894 782 load 217
+bin 478 type 6 capacity 250 cost 250 items 648 252 load 249
+bin 479 type 6 capacity 250 cost 250 items 367 454 load 250
+bin 480 type 5 capacity 220 cost 220 items 840 539 load 209
+bin 481 type 6 capacity 250 cost 250 items 570 494 load 250
+bin 482 type 5 capacity 220 cost 220 items 642 877 load 219
+bin 483 type 6 capacity 250 cost 250 items 955 872 load 248
+bin 484 type 6 capacity 250 cost 250 items 557 68 load 245
+bin 485 type 5 capacity 220 cost 220 items 530 930 load 219
+bin 486 type 5 capacity 220 cost 220 items 522 41 load 219
+bin 487 type 5 capacity 220 cost 220 items 995 862 load 219
+bin 488 type 6 capacity 250 cost 250 items 817 325 load 246
+bin 489 type 6 capacity 250 cost 250 items 736 478 load 245
+bin 490 type 2 capacity 130 cost 130 items 861 load 130
+bin 491 type 5 capacity 220 cost 220 items 154 250 load 219
+bin 492 type 5 capacity 220 cost 220 items 189 199 load 220
+bin 493 type 5 capacity 220 cost 220 items 554 804 load 218
+bin 494 type 6 capacity 250 cost 250 items 744 771 load 249
+bin 495 type 4 capacity 190 cost 190 items 304 527 load 190
+bin 496 type 6 capacity 250 cost 250 items 998 27 455 load 249
+bin 497 type 3 capacity 160 cost 160 items 292 load 160
+bin 498 type 6 capacity 250 cost 250 items 137 792 load 248
+bin 499 type 5 capacity 220 cost 220 items 275 566 load 219
+bin 500 type 6 capacity 250 cost 250 items 345 502 load 249
+bin 501 type 6 capacity 250 cost 250 items 927 410 load 240
+bin 502 type 6 capacity 250 cost 250 items 277 540 load 246
+bin 503 type 6 capacity 250 cost 250 items 599 551 load 250
+bin 504 type 3 capacity 160 cost 160 items 999 load 157
+bin 505 type 5 capacity 220 cost 220 items 187 218 load 218
+bin 506 type 6 capacity 250 cost 250 items 443 194 load 237
+bin 507 type 6 capacity 250 cost 250 items 310 392 load 238
+bin 508 type 6 capacity 250 cost 250 items 466 688 load 250
+bin 509 type 6 capacity 250 cost 250 items 626 965 load 245
+bin 510 type 5 capacity 220 cost 220 items 207 166 load 220
+bin 511 type 4 capacity 190 cost 190 items 429 358 load 180
+bin 512 type 6 capacity 250 cost 250 items 813 450 load 248
+bin 513 type 6 capacity 250 cost 250 items 34 271 load 240
+bin 514 type 6 capacity 250 cost 250 items 729 924 load 248
+bin 515 type 4 capacity 190 cost 190 items 402 819 load 189
+bin 516 type 6 capacity 250 cost 250 items 85 598 load 247
+bin 517 type 6 capacity 250 cost 250 items 564 475 load 249
+bin 518 type 6 capacity 250 cost 250 items 699 737 load 248
+bin 519 type 4 capacity 190 cost 190 items 788 480 load 190
+bin 520 type 4 capacity 190 cost 190 items 931 146 load 188
+bin 521 type 6 capacity 250 cost 250 items 779 593 load 246
+bin 522 type 6 capacity 250 cost 250 items 600 663 load 244
+bin 523 type 6 capacity 250 cost 250 items 255 689 load 243
+bin 524 type 5 capacity 220 cost 220 items 313 954 load 218
+bin 525 type 5 capacity 220 cost 220 items 886 375 load 213
+bin 526 type 6 capacity 250 cost 250 items 684 214 load 249
+bin 527 type 5 capacity 220 cost 220 items 202 482 load 216
+bin 528 type 5 capacity 220 cost 220 items 987 532 load 220

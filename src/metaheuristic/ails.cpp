@@ -12,11 +12,11 @@ AILS::AILS(const VSBPPCInstance& instance,
            bool use_ucb,
            double c_,
            BuilderType builder_type_,
-           double builder_alpha_,
            bool use_qrvnd_,
            double alpha_,
            double gamma_,
            double epsilon_,
+           bool exact_cover_,
            bool verbose_,
            double time_limit_)
     : inst(instance),
@@ -29,11 +29,11 @@ AILS::AILS(const VSBPPCInstance& instance,
       builder_type(builder_type_),
       useUCB(use_ucb),
       c(c_),
-      builder_alpha(builder_alpha_),
       useQRVND(use_qrvnd_),
       alpha(alpha_),
       gamma(gamma_),
       epsilon(epsilon_),
+      exactCover(exact_cover_),
       verbose(verbose_),
       time_limit(time_limit_),
       rng(rng_),
@@ -67,24 +67,24 @@ int AILS::computeK(PerturbationType perturbation_type,
     if (perturbation_type == PerturbationType::RELOCATEK ||
         perturbation_type == PerturbationType::EXCHANGEK) {
 
-        int k_min = std::max(1, static_cast<int>(0.05 * n_items));
-        int k_max = std::max(k_min + 1, static_cast<int>(0.20 * n_items));
+        int k_min = std::max(1, static_cast<int>(0.005 * n_items));
+        int k_max = std::max(k_min + 1, static_cast<int>(0.025 * n_items));
 
         int k = k_min + static_cast<int>((k_max - k_min) * intensity);
         return std::max(1, k);
     }
 
     if (perturbation_type == PerturbationType::MERGEK) {
-        int k_min = std::max(1, static_cast<int>(0.025 * n_bins));
-        int k_max = std::max(k_min + 1, static_cast<int>(0.05 * n_bins));
+        int k_min = std::max(1, static_cast<int>(0.0025 * n_bins));
+        int k_max = std::max(k_min + 1, static_cast<int>(0.01 * n_bins));
 
         int k = k_min + static_cast<int>((k_max - k_min) * intensity);
         return std::max(1, k);
     }
 
     if (perturbation_type == PerturbationType::SPLITK) {
-        int k_min = std::max(1, static_cast<int>(0.01 * n_bins));
-        int k_max = std::max(k_min + 1, static_cast<int>(0.02 * n_bins));
+        int k_min = std::max(1, static_cast<int>(0.0025 * n_bins));
+        int k_max = std::max(k_min + 1, static_cast<int>(0.0075 * n_bins));
 
         int k = k_min + static_cast<int>((k_max - k_min) * intensity);
         return std::max(1, k);
@@ -209,12 +209,6 @@ Solution AILS::buildInitialSolution() const {
         case BuilderType::HC2:
             return Builder::HC2(inst, kw, kc, nullptr);
 
-        // case BuilderType::IFFD:
-        //     return Builder::IFFD(inst, kw, kc, builder_alpha, nullptr);
-
-        // case BuilderType::IBFD:
-        //     return Builder::IBFD(inst, kw, kc, builder_alpha, nullptr);
-
         case BuilderType::IFFD: {
             std::vector<double> alphas = {0.0, 0.25, 0.5, 0.75, 1.0};
 
@@ -289,6 +283,37 @@ Solution AILS::run() {
     int iter = 0;
     int no_improve = 0;
 
+    auto applySetCoveringIfNeeded = [&](int iter) {
+        if (iter % 10 != 0 || iter < 10) return;
+
+        auto& ls = useQRVND ? qrvnd.ls : rvnd.ls;
+
+        // Add columns from the current solution to the SC pool.
+        ls.addToSetCoveringPool(*ls.solution);
+
+        // Try the set-covering neighborhood.
+        if (ls.setCoveringNeighborhood(30.0, exactCover)) {
+            // If it improved, refresh the elite and add the new bins too.
+            ls.initializeSetCoveringFromElite(*ls.solution);
+            ls.addToSetCoveringPool(*ls.solution);
+        }
+    };
+
+    auto initSetCoveringIfEnabled = [&]() {
+        auto& ls = useQRVND ? qrvnd.ls : rvnd.ls;
+        ls.initializeSetCoveringFromElite(best);
+    };
+
+    auto updateSetCoveringPoolWithLocalOptimum = [&]() {
+        auto& ls = useQRVND ? qrvnd.ls : rvnd.ls;
+
+        if (ls.solution && ls.solution->isFeasible()) {
+            ls.addToSetCoveringPool(*ls.solution);
+        }
+    };
+
+    updateSetCoveringPoolWithLocalOptimum();
+
     // -------------------- MAIN LOOP --------------------
     while (iter < max_iterations && no_improve < max_no_improve) {
         auto now = std::chrono::high_resolution_clock::now();
@@ -327,6 +352,10 @@ Solution AILS::run() {
             rvnd.run();
         }
 
+        updateSetCoveringPoolWithLocalOptimum();
+
+        applySetCoveringIfNeeded(iter);
+
         int candObj = candidate.computeObjective();
 
         bool improvedBest = false;
@@ -336,6 +365,7 @@ Solution AILS::run() {
             best = candidate;
             no_improve = 0;
             improvedBest = true;
+            initSetCoveringIfEnabled();
         } else {
             ++no_improve;
         }

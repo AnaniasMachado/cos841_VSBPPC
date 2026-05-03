@@ -8,7 +8,11 @@
 #include <random>
 #include <vector>
 
+#include <iostream>
+#include <chrono>
+
 class RVND {
+    friend class AILS;
 public:
     Solution* sol;
     LocalSearch ls;

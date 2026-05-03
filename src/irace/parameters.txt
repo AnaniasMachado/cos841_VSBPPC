@@ -1,0 +1,16 @@
+# =====================================================
+# irace parameters for AILS-VSBPPC
+# =====================================================
+
+# -------------------- Penalty weights --------------------
+kw            "--kw "            o    (200, 250, 300, 400, 500)
+kc            "--kc "            o    (200, 250, 300, 400, 500)
+
+# -------------------- AILS stopping parameters --------------------
+max_it        "--max_it "        o    (250, 500, 750)
+max_no_imp    "--max_no_imp "    o    (15, 20, 25, 30, 40, 50)
+
+# -------------------- AILS strategy parameters --------------------
+acceptance    "--acceptance "    c    (BEST, ITERATIVE, RW)
+builder       "--builder "       c    (IFFD, IBFD)
+exact_cover   "--exact_cover "   c    (0, 1)

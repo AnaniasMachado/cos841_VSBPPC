@@ -17,7 +17,7 @@ QRVND::QRVND(Solution& solution,
       initialized(false),
       current_p(0),
       iter(-1) {
-    perms = generatePermutations(5);
+    perms = generatePermutations(3);
 
     Q = std::vector<std::vector<double>>(
         perms.size(),
@@ -93,9 +93,7 @@ bool QRVND::applyOrder(const std::vector<int>& order) {
         switch (c[k]) {
             case 0: improved = ls.classic();                        break;
             case 1: improved = ls.ejectionGlobal();                 break;
-            case 2: improved = ls.assignment((int)sol->N / 20);     break;
-            case 3: improved = ls.ejectionChain();                  break;
-            case 4: improved = ls.grenade();                        break;
+            case 2: improved = ls.ejectionChain();                  break;
         }
 
         if (improved) {
@@ -112,6 +110,93 @@ bool QRVND::applyOrder(const std::vector<int>& order) {
 
     return improved_global;
 }
+
+// bool QRVND::applyOrder(const std::vector<int>& order) {
+//     bool improved_global = false;
+
+//     std::vector<int> c = order;
+//     int k = 0;
+
+//     auto neighborhoodName = [](int id) -> const char* {
+//         switch (id) {
+//             case 0: return "classic";
+//             case 1: return "ejectionGlobal";
+//             case 2: return "assignment";
+//             case 3: return "ejectionChain";
+//             case 4: return "grenade";
+//             default: return "unknown";
+//         }
+//     };
+
+//     while (k < static_cast<int>(c.size())) {
+//         bool improved = false;
+
+//         const int neigh = c[k];
+//         const char* name = neighborhoodName(neigh);
+
+//         std::cout << "[QRVND] iter=" << iter
+//                   << " k=" << k
+//                   << " start " << name
+//                   << " obj=" << sol->computeObjective()
+//                   << " feasible=" << (sol->isFeasible() ? "yes" : "no")
+//                   << " badBins=" << sol->badBins.size()
+//                   << std::endl;
+
+//         auto start = std::chrono::high_resolution_clock::now();
+
+//         switch (neigh) {
+//             case 0:
+//                 improved = ls.classic();
+//                 break;
+
+//             case 1:
+//                 improved = ls.ejectionGlobal();
+//                 break;
+
+//             // case 2:
+//             //     improved = ls.assignment(static_cast<int>(sol->N) / 20);
+//             //     break;
+
+//             case 3:
+//                 improved = ls.ejectionChain();
+//                 break;
+
+//             // case 4:
+//             //     improved = ls.grenade();
+//             //     break;
+
+//             default:
+//                 improved = false;
+//                 break;
+//         }
+
+//         auto end = std::chrono::high_resolution_clock::now();
+//         std::chrono::duration<double> elapsed = end - start;
+
+//         std::cout << "[QRVND] iter=" << iter
+//                   << " k=" << k
+//                   << " end " << name
+//                   << " improved=" << (improved ? "yes" : "no")
+//                   << " runtime=" << elapsed.count() << " s"
+//                   << " obj=" << sol->computeObjective()
+//                   << " feasible=" << (sol->isFeasible() ? "yes" : "no")
+//                   << " badBins=" << sol->badBins.size()
+//                   << std::endl;
+
+//         if (improved) {
+//             improved_global = true;
+
+//             // Restart RVND with the same selected permutation
+//             k = 0;
+//         } else {
+//             k++;
+//         }
+//     }
+
+//     iter++;
+
+//     return improved_global;
+// }
 
 // -------------------- Run ONE QRVND iteration --------------------
 void QRVND::run() {
